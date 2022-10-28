@@ -1,0 +1,17 @@
+# Ignore a pasta bin
+
+bin/
+
+# Ignore a pasta .settings
+
+.settings/
+
+# Ignore o arquivo .classpath
+
+.classpath
+
+# Ignore o arquivo .project
+
+.project
+
+target/
