@@ -1,7 +1,6 @@
-package br.senac.procuratio.modelo.enumeracao.parentesco;
+package br.senac.procuratio.modelo.enumeracao.grauParentesco;
 
-public enum Parentesco {
-	
+public enum GrauParentesco {
+
 	PAI, MAE, CONJUGE, COMPANHEIRO, FILHO, ENTEADO, IRMAO, NETO, AVO;
-
 }
