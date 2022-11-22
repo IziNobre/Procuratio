@@ -1,6 +1,6 @@
-# Ignore a pasta bin
+# Ignore a pasta target
 
-bin/
+target/
 
 # Ignore a pasta .settings
 
@@ -13,5 +13,3 @@ bin/
 # Ignore o arquivo .project
 
 .project
-
-target/

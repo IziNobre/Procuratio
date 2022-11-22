@@ -11,15 +11,24 @@ public abstract class Pessoa {
 	private String cpf;
 	private Genero genero;
 	
-	protected  Pessoa (String nome, LocalDate dataNascimento, String cpf, Genero genero) {
+	public Pessoa(String nome) {
+		this.nome = nome;
+	}
+	protected Pessoa(String nome, String cpf) {
+
+		this.nome = nome;
+		this.cpf = cpf;
 		
+	}
+
+	protected Pessoa(String nome, LocalDate dataNascimento, String cpf, Genero genero) {
+
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
 		this.genero = genero;
-						
 	}
-
+	
 	public String getNome() {
 		return nome;
 	}
@@ -51,20 +60,19 @@ public abstract class Pessoa {
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
-	
+
 	public boolean equals(Object objeto) {
-		
-		if(objeto == null)
+		if (objeto == null)
 			return false;
-		
-		if(this == objeto)
+
+		if (this == objeto)
 			return true;
-		
-		if(this.getClass() != objeto.getClass())
+
+		if (this.getClass() != objeto.getClass())
 			return false;
-		
+
 		Pessoa pessoa = (Pessoa) objeto;
-				
-		return this.getNome().equals(pessoa.getNome()) && this.getDataNascimento().equals(pessoa.getDataNascimento()) && this.getCpf().equals(pessoa.getCpf()) && this.getGenero().equals(pessoa.getGenero());
+		return this.getNome().equals(pessoa.getNome()) && this.getDataNascimento().equals(pessoa.getDataNascimento())
+				&& this.getCpf().equals(pessoa.getCpf()) && this.getGenero().equals(pessoa.getGenero());
 	}
 }

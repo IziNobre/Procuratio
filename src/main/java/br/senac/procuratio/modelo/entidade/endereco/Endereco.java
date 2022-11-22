@@ -1,25 +1,55 @@
 package br.senac.procuratio.modelo.entidade.endereco;
 
 public class Endereco {
-
+	
+	private Long id;
 	private String logradouro;
 	private short numero;
 	private String complemento;
 	private String bairro;
 	private String cidade;
+	private String uf;	
 	private String cep;
-	private String uf;
-
-	public Endereco (String logradouro, short numero, String complemento, String bairro, String cidade, String cep, String uf) {
+	
+	
+	public Endereco(Long id) {
+		
+		this.id = id;
+	}	
+	
+	public Endereco (String logradouro, short numero, String complemento, String bairro, String cidade, String uf, String cep) {
 
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.complemento = complemento;
 		this.bairro = bairro;
 		this.cidade = cidade;
+		this.uf = uf;
 		this.cep = cep;
-		this.uf = uf;		
+				
+	}
+	
+	public Endereco (Long id, String logradouro, short numero, String complemento, String bairro, String cidade, String uf, String cep) {
 
+		this.id = id;
+		this.logradouro = logradouro;
+		this.numero = numero;
+		this.complemento = complemento;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.uf = uf;		
+		this.cep = cep;
+	}
+
+	public Endereco(String logradouro) {
+		this.logradouro = logradouro;
+	}
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getLogradouro () {
@@ -77,7 +107,8 @@ public class Endereco {
 
 		Endereco endereco = (Endereco) objeto;
 
-		return this.getLogradouro().equals(endereco.getLogradouro()) && this.getNumero() == endereco.getNumero() && this.getComplemento().equals (endereco.getComplemento()) && this.getBairro().equals (endereco.getBairro()) && this.getCep().equals (endereco.getCep()) && this.getCidade().equals (endereco.getCidade()) && this.getUf().equals (endereco.getUf()); 
+		return this.getId() == endereco.getId() && this.getLogradouro().equals(endereco.getLogradouro()) 
+				&& this.getNumero() == endereco.getNumero() && this.getComplemento().equals (endereco.getComplemento()) && this.getBairro().equals (endereco.getBairro()) && this.getCep().equals (endereco.getCep()) && this.getCidade().equals (endereco.getCidade()) && this.getUf().equals (endereco.getUf()); 
 
 	}
 
