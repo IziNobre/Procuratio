@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 import br.senac.procuratio.modelo.entidade.pessoa.Pessoa;
 import br.senac.procuratio.modelo.enumecao.Genero;
-import br.senac.procuratio.modelo.enumeracao.grauParentesco.GrauParentesco;
+import br.senac.procuratio.modelo.enumeracao.parentesco.Parentesco;
 
 public class Dependente extends Pessoa {
 	
-	private  GrauParentesco grauParentesco;
+	private  Parentesco grauParentesco;
 	
 	
-	public Dependente (String nome, LocalDate dataNascimento, String cpf, Genero genero, GrauParentesco grauParentesco) {
+	public Dependente (String nome, LocalDate dataNascimento, String cpf, Genero genero, Parentesco grauParentesco) {
 		super (nome, dataNascimento, cpf, genero);
 		this.setGrauParentesco(grauParentesco);
 		
@@ -19,12 +19,12 @@ public class Dependente extends Pessoa {
 	}
 
 
-	public GrauParentesco getGrauParentesco() {
+	public Parentesco getGrauParentesco() {
 		return grauParentesco;
 	}
 
 
-	public void setGrauParenetesco(GrauParentesco grauParentesco) {
+	public void setGrauParenetesco(Parentesco grauParentesco) {
 		this.grauParentesco = grauParentesco;
 	}
 	
