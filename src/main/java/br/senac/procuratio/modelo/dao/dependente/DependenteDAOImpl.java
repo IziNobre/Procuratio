@@ -11,7 +11,7 @@ import java.util.List;
 
 import br.senac.procuratio.modelo.entidade.pessoa.dependente.Dependente;
 import br.senac.procuratio.modelo.enumeracao.genero.Genero;
-import br.senac.procuratio.modelo.enumeracao.grauParentesco.GrauParentesco;
+import br.senac.procuratio.modelo.enumeracao.parentesco.Parentesco;
 
 public class DependenteDAOImpl implements DependenteDAO {
 
@@ -33,7 +33,7 @@ public class DependenteDAOImpl implements DependenteDAO {
 			
 			insert = conexao.prepareStatement("INSERT INTO dependente (cpf_dependente, grau_parentesco_dependente) VALUES (?,?)");
 			insert.setString(1, dependente.getCpf());
-			insert.setInt(2, dependente.getGrauParentesco().ordinal()+1);
+			insert.setInt(2, dependente.getParentesco().ordinal()+1);
 
 			insert.execute();
 			
@@ -62,9 +62,8 @@ public class DependenteDAOImpl implements DependenteDAO {
 				erro.printStackTrace();
 			}
 		}
-		/*return dependente;
-	**/}
-
+	}
+	
 	public List<Dependente> recuperarDependentesEmpregado(String cpfEmpregado) {
 		
 
@@ -88,9 +87,9 @@ public class DependenteDAOImpl implements DependenteDAO {
 				LocalDate dataNascimento = LocalDate.parse(resultado.getString("data_nascimento_pessoa"));
 				String cpf = resultado.getString("cpf_pessoa");
 				Genero genero = Genero.valueOf(resultado.getString("genero_pessoa"));
-				GrauParentesco grauParentesco = GrauParentesco.valueOf(resultado.getString("grau_parentesco_dependente"));
+				Parentesco parentesco = Parentesco.valueOf(resultado.getString("grau_parentesco_dependente"));
 				
-				 dependentes.add(new Dependente(nome, dataNascimento, cpf, genero, grauParentesco));
+				 dependentes.add(new Dependente(nome, dataNascimento, cpf, genero, parentesco));
 			}
 
 		} catch (SQLException erro) {
@@ -300,7 +299,7 @@ public class DependenteDAOImpl implements DependenteDAO {
 		}
 	}
 	
-	public void editarGrauParentesco(Dependente dependente, GrauParentesco novoGrauParentesco) {
+	public void editarParentesco(Dependente dependente, Parentesco novoParentesco) {
 		
 		Connection conexao = null;
 		PreparedStatement update = null;
@@ -310,7 +309,7 @@ public class DependenteDAOImpl implements DependenteDAO {
 			conexao = conectarBanco();
 			update = conexao.prepareStatement("UPDATE dependente SET grau_parentesco_dependente = ? WHERE cpf_dependente = ?");
 			
-			update.setInt(1, novoGrauParentesco.ordinal()+1);
+			update.setInt(1, novoParentesco.ordinal()+1);
 			update.setString(2, dependente.getCpf());
 
 			update.execute();

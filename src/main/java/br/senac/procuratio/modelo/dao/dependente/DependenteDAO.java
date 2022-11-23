@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.senac.procuratio.modelo.entidade.pessoa.dependente.Dependente;
 import br.senac.procuratio.modelo.enumeracao.genero.Genero;
-import br.senac.procuratio.modelo.enumeracao.grauParentesco.GrauParentesco;
+import br.senac.procuratio.modelo.enumeracao.parentesco.Parentesco;
 
 public interface DependenteDAO {
 	
@@ -21,7 +21,7 @@ public interface DependenteDAO {
 	
 	void editarGenero(Dependente dependente, Genero novoGenero);
 	
-	void editarGrauParentesco(Dependente dependente, GrauParentesco novoGrauParentesco);
+	void editarParentesco(Dependente dependente, Parentesco novoParentesco);
 	
 	List<Dependente> recuperarDependentesEmpregado(String cpf_empregado);
 	
