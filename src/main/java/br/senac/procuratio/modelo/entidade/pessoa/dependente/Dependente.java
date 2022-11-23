@@ -4,29 +4,29 @@ import java.time.LocalDate;
 
 import br.senac.procuratio.modelo.entidade.pessoa.Pessoa;
 import br.senac.procuratio.modelo.enumeracao.genero.Genero;
-import br.senac.procuratio.modelo.enumeracao.grauParentesco.GrauParentesco;
+import br.senac.procuratio.modelo.enumeracao.parentesco.Parentesco;
 
 public class Dependente extends Pessoa {
 
 	
-	private GrauParentesco grauParentesco;
+	private Parentesco parentesco;
 
-	public Dependente(String nome, GrauParentesco grauParentesco) {
+	public Dependente(String nome, Parentesco parentesco) {
 		super(nome);
-		this.grauParentesco = grauParentesco;
+		this.parentesco = parentesco;
 		
 	}
-	public Dependente(String nome, LocalDate dataNascimento, String cpf, Genero genero, GrauParentesco grauParentesco) {
+	public Dependente(String nome, LocalDate dataNascimento, String cpf, Genero genero, Parentesco Parentesco) {
 		super(nome, dataNascimento, cpf, genero);
-		this.setGrauParentesco(grauParentesco);
+		this.parentesco = parentesco;
 	}
 
-	public GrauParentesco getGrauParentesco() {
-		return grauParentesco;
+	public Parentesco getParentesco() {
+		return parentesco;
 	}
 
-	public void setGrauParentesco(GrauParentesco grauParentesco) {
-		this.grauParentesco = grauParentesco;
+	public void setParentesco(Parentesco parentesco) {
+		this.parentesco = parentesco;
 	}
 
 	public boolean equals(Object objeto) {
@@ -44,7 +44,7 @@ public class Dependente extends Pessoa {
 		
 		return this.getNome().equals(dependente.getNome()) && this.getDataNascimento().equals(dependente.getDataNascimento()) 
 				&& this.getCpf().equals(dependente.getCpf()) && this.getGenero().equals(dependente.getGenero()) 
-				&& this.getGrauParentesco().equals(dependente.getGrauParentesco());
+				&& this.getParentesco().equals(dependente.getParentesco());
 	}
 
 }
