@@ -2,9 +2,7 @@ package br.senac.procuratio.modelo.dao.empresa;
 
 import java.util.List;
 
-import br.senac.procuratio.modelo.entidade.contato.Contato;
 import br.senac.procuratio.modelo.entidade.empresa.Empresa;
-import br.senac.procuratio.modelo.entidade.endereco.Endereco;
 
 public interface EmpresaDAO {
 
@@ -20,7 +18,7 @@ public interface EmpresaDAO {
 
 	void atualizarContatoEmpresa(Empresa empresa, Long id_contato);
 	
-	boolean autenticarLogin (String cnpj, String senha_login);
+	boolean verificarLoginSenhaNoBanco(String cnpj, String senha);
 
 	List<Empresa> recuperarEmpresas();
 

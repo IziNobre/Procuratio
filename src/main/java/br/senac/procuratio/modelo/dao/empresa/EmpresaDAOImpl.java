@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.cj.protocol.Resultset;
+
 import br.senac.procuratio.modelo.entidade.contato.Contato;
 import br.senac.procuratio.modelo.entidade.empresa.Empresa;
 import br.senac.procuratio.modelo.entidade.endereco.Endereco;
@@ -24,12 +26,14 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 		try {
 
 			conexao = conectarBanco();
-			insert = conexao.prepareStatement("INSERT INTO empresa (nome_empresa, cnpj_empresa, id_endereco, id_contato) VALUES (?,?,?,?)");
+			insert = conexao.prepareStatement("INSERT INTO empresa (nome_empresa, cnpj_empresa, senha_login_empresa, id_endereco, id_contato) VALUES (?,?,?,?,?)");
 
 			insert.setString(1, empresa.getNome());
 			insert.setString(2, empresa.getCnpj());
-			insert.setLong(3, empresa.getEndereco().getId());
-			insert.setLong(4, empresa.getContato().getId());
+			insert.setString(3, empresa.getSenhaLogin());
+			insert.setLong(4, empresa.getEndereco().getId());
+			insert.setLong(5, empresa.getContato().getId());
+			
 
 			insert.execute();
 
@@ -234,26 +238,25 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 		}
 	}
 
-	public boolean autenticarLogin(String cnpj, String senha_login) {
+	public boolean verificarLoginSenhaNoBanco(String cnpj, String senha) {
 		
 		Connection conexao = null;
 		PreparedStatement consulta = null;
 		ResultSet resultado = null;
-		boolean autenticacao = false;
 		
-		try {
-									
-			conexao = conectarBanco();
-			consulta = conexao.prepareStatement("SELECT cnpj_empresa, senha_login_empresa FROM empresa "
-					+ "WHERE cnpj_empresa = ? and senha_login_empresa = ? ");
+		boolean consultaBanco = false;
 
+		try {
+			conexao = conectarBanco();
+			consulta = conexao.prepareStatement("SELECT senha_login_empresa FROM empresa WHERE cnpj_empresa = ? and senha_login_empresa = ?");
+			
 			consulta.setString(1, cnpj);
-			consulta.setString(2, senha_login);
-			resultado = consulta.executeQuery();
+			consulta.setString(2, senha);
 			
-			if (resultado != null) 
-				autenticacao = true;
+			consulta.execute();
 			
+			resultado = consulta.getResultSet();
+			consultaBanco = resultado.next();
 			
 		} catch (SQLException erro) {
 			erro.printStackTrace();
@@ -277,7 +280,8 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 				erro.printStackTrace();
 			}
 		}
-		return autenticacao;
+		return consultaBanco;
+		
 	}
 		
 	public List<Empresa> recuperarEmpresas() {
@@ -347,5 +351,4 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 
 	}
 
-	
 }
