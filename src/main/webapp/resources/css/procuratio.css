@@ -1,0 +1,647 @@
+/*Procuratio Login*/
+
+/*Fundo tela*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #E0E3EC;
+  color: white;
+  margin: 0;
+}
+
+/*Posição caixa de login - Altur e Nome PROCURATIO*/
+.cabecalho-procuratio {
+  background-color: #358a9b;
+  position: left;
+  font-size: 30px; 
+  font-weight: bold; 
+  padding: 50px;
+  color: #11385B;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+/* Home - Login - Cadastrar-se - Contato */
+.cabecalho-procuratio a {
+  float: left;
+  color: #11385B;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+/* Cor quando passa o mouse Home - Login - Cadastrar-se - Contato */
+.cabecalho-procuratio a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+  
+/* Estilo do botão selecionado*/
+.cabecalho-procuratio a.active {
+  background-color:lightseagreen;
+  color: white;
+}
+  
+/* Ajustar Home - Login - Cadastrar-se - Contato a direita de Procuratio */
+.cabecalho-esquerda {
+  float: right;
+}
+
+  
+
+/*Caixa Usuário e Senha*/
+.container {
+  width: 50vw;
+  height: 36vh;
+  border-radius: 6px;
+  background-color: #D2D7E8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: center;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+ 
+
+/* Ajuste na caixa Nome = Cadastro de Usuário*/
+.container-cabecalho {
+  color: #08242F;
+  background: #C1C7DB;
+  backdrop-filter: blur(2px);
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+  
+/* Deixar Nomes Usuário e Senha ao lado da caixa de digitação */
+.col-25 {
+  color: #373C49;
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+    
+/* Deixar Nomes Usuário e Senha ao lado da caixa de digitação */
+.col-75 {
+  color: #373C49;
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/*Centralizar os nomes Usuário e Senha*/
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.botao-cadastrar, .btn-entrar {
+  float: right;
+  font-size: 20px;
+  background: #124559;
+  border: 1px solid #000000;
+  backdrop-filter: blur(2px);
+  border-radius: 20px;
+  color: #FFFFFF;
+  left: 346px;
+  top: 854px;
+  cursor: pointer;
+}
+
+  .btn-esqueceuasenha{
+    float: right;
+    border: none;
+    background-color: #D2D7E8;
+    cursor: pointer;
+  }
+
+  .btn-naopossuicadastro{
+    float: left;
+    margin-top: 25px;
+    cursor: pointer;
+    background-color: #D2D7E8;
+    border: none;
+
+  }
+
+  .btn-entrar{
+    margin-top: 25px;
+    float:right
+  }
+
+  
+  /* Organiza a caixa de login */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /*Configurações Caixa Login, tamanho da caixa de texto*/
+  input[type=text], input[type=password], select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(25, 14, 14);
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+  
+  /*Posição caixa de login*/
+main {
+    width: 100vw;
+    height: 90vh;
+}
+
+    /*Deixa caixa de login centralizada*/
+  div.centraliza {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+  }
+
+  .avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  /*borda da página*/
+  body{
+    border: 5px solid snow;
+    border-radius: 10px;
+  }
+
+  .vertical-menu {
+    width: 200px; /* Set a width if you like */
+  }
+
+  .menu-empresa {
+    background: #124559;
+    border-radius: 10px;
+  }
+  
+
+
+  /*Prouratio - Minha Area e Empresa */
+
+  .minha-area, .empresa, .relatorios a, .empregados{
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background: #124559;
+    border-radius: 10px;
+    color: #EFF6E0;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    text-align: center;
+    
+  }
+  
+  .vertical-menu a {
+    background: #124559;
+    border-radius: 10px;
+    color: #EFF6E0;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .vertical-menu select {
+    background: #124559;
+    border-radius: 10px;
+    color: #EFF6E0;
+
+  }
+  
+  /*Cor do fundo quando mouse em cima*/
+  .vertical-menu a:hover {
+    background-color: #ccc; /* Dark grey background on mouse-over */
+  }
+  
+  .vertical-menu a.active {
+    background-color: #04AA6D; /* Add a green color to the "active/current" link */
+    color: white;
+  }
+
+
+  /*CADASTRAR EMPREGADO - ETAPA 2*/
+
+  /*Caixa Prenchimento Endereço*/
+  .centraliza-endereco{
+    margin-top: 100px;
+    float: left;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 30px;
+    background: #FFFFFF;
+  }
+
+  .container-cabecalho-novoempregado{
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    color: #393939;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+
+  .cadastro-de-empregado{
+    color: #3F3F3F;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .cadastro-empregados-opcoes{
+    float: left;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+    color: #42474B;
+    background: #FFFFFF;
+  }
+     
+  /* Cor quando passa o mouse em cima */
+  .cadastro-empregados-opcoes a:hover {
+    background: rgba(231, 234, 245, 0.6);      
+    color: white;
+  }
+    
+  /* Estilo do botão selecionado*/
+  .cadastro-empregados-opcoes a.active {
+    background-color:lightseagreen;
+    color: white;
+  }
+  
+  .campos-preenchimento-endereco{
+    color: #000000;
+  }
+
+  .proximo, .voltar, .finalizar, .confirmar, .excluir {
+    float: right;
+    font-size: 20px;
+    background: #124559;
+    border: 1px solid #000000;
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
+    color: #FFFFFF;
+    left: 346px;
+    top: 854px;
+    cursor: pointer;
+  }
+
+    
+    /*CADASTRAR EMPREGADO - ETAPA 3*/
+
+  /*Caixa Prenchimento Endereço*/
+  .centraliza-contato{
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+  }
+
+  .campos-preenchimento-contato{
+    color: #000000;
+  }
+
+
+  /*HOME RELATÓRIOS*/
+
+  .menu-relatorios {
+    background: #124559;
+    border-radius: 10px;
+  }
+
+
+  /*RELATÓRIO DE ADMITIDOS*/
+
+  /*Deixa caixa Empregados Admitidos*/
+  div.centraliza-relatorio-admitidos {
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+  }
+
+  /*Caixa Prenchimento Empregados Admitidos*/
+  .centraliza-relatorio-admitidos{
+    width: 50vw;
+    border-radius: 20px;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 30px;
+    background: #FFFFFF;
+    }
+
+  .container-cabecalho-relatorio-admitidos{
+    color: #393939;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+
+  .empregados-admitidos{
+    color: #3F3F3F;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .btn {
+    box-sizing: border-box;
+    color: #373C49;
+    padding: 13px 20px;
+    
+    position: absolute;
+    width: 800px;
+    height: 40px;
+
+    background: #EFEFF9;
+    border: 1px solid #0A1D2F;
+    backdrop-filter: blur(2px);
+
+    border-radius: 10px;
+  }
+
+  .btn-cpf{
+    margin-right: 130px;
+    border: none;
+    background-color: #EFEFF9;
+    color: #119686
+  }
+  
+  .btn-nome-empregado{
+    margin-right: 130px;
+    border: none;
+    background-color: #EFEFF9;
+  }
+
+  .btn-funcao{
+    margin-right: 130px;
+    border: none;
+    background-color: #EFEFF9;
+  }
+
+  .btn-data-admissao{
+    border: none;
+    background-color: #EFEFF9;
+  }
+
+  
+  /*ADMITIDOS - MÊS E ANO*/
+
+  /*Deixa caixa Empregados Admitidos Mês e Ano Centralizada*/
+  div.centraliza-relatorio-admitidos-mes-ano {
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+  }
+
+  .container-relatorio-admitidos-mes-ano{
+    box-sizing: border-box;
+    width: 50vw;
+    height: 36vh;
+    left: 346px;
+    top: 854px;
+    border-radius: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid #000000;
+  }
+
+  .container-cabecalho-admitidos-mes-ano{
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    color: #393939;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+
+  .empregados-admitidos-mes-ano{
+    color: #3F3F3F;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .mes-ano a{
+    line-height: 39px;
+    color: #373C49;
+  }
+
+  /*Caixinha de Texto - Mês e Ano*/
+  form.example input[type=text] {
+    float: left;
+    width: 30%;
+  }
+
+  /* Estilo - Botão Pesquisar */
+  form.example button {
+    float: left;
+    width: 5%;
+    padding: 10px;
+    border: none;
+    background: #FFFFFF;
+    color: #1B4356;
+    font-size: 17px;
+    cursor: pointer;
+  }
+
+  /*Quando Passa o Mouse por cima do botão de Pesquisar*/
+  form.example button:hover {
+    background: #0b7dda;
+  }
+
+
+
+    /*CADASTRAR Empresa - ETAPA 1*/
+
+  /*Caixa Prenchimento Endereço*/
+  .centraliza-cadastro-empresa{
+    margin-top: 100px;
+    float: left;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 30px;
+    background: #FFFFFF;
+  }
+
+  .cabecalho-cadastro-empres{
+    color: #3F3F3F;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .cadastro-empresa-opcoes{
+    float: left;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+    color: #42474B;
+    background: #FFFFFF;
+  }
+     
+  /* Cor quando passa o mouse em cima */
+  .cadastro-empresa-opcoes a:hover {
+    background: rgba(231, 234, 245, 0.6);      
+    color: white;
+  }
+    
+  /* Estilo do botão selecionado*/
+  .cadastro-empresa-opcoes a.active {
+    background-color:lightseagreen;
+    color: white;
+  }
+
+  /*Cor da fonte*/  
+  .campos-preenchimento-empresa-dadoscadastrais{
+    color: #000000;
+  }
+    
+
+
+  /*CADASTRAR Empresa - ETAPA 2*/
+    
+  /*Cor da fonte*/
+  .campos-preenchimento-empresa-contato{
+    color: #000000;
+  }
+     
+
+  /*CADASTRAR EMPRESA - ETAPA 3*/
+    
+  /*Cor da fonte*/
+  .campos-preenchimento-empresa-endereco{
+    color: #000000;
+  }
+
+  .cancelar {
+    float: left;
+    font-size: 20px;
+    background: #6B1D1D;
+    border: 1px solid #000000;
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
+    color: #FFFFFF;
+    left: 346px;
+    top: 854px;
+    cursor: pointer;
+  }
+
+
+
+  /*EDIÇÃO DADOS EMPRESA E EXCLUSAO DA EMPRESA 1*/
+
+  .centraliza-edicao-dados-empresa{
+    width: 80vw;
+    height: 80vh;
+    margin-top: 100px;
+    float: left;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 30px;
+    background: #FFFFFF;
+  }
+
+  .cabecalho-edicao-dados-empresa{
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    color: #393939;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+
+ .edicao-dados-empresa h2{
+    color: #3F3F3F;
+    text-align: left;
+  }
+
+  .edicao-dados-empresa label{
+    color: #000000;
+  }
+
+
+
+  /*EDIÇÃO DADOS EMPRESA E EXCLUSAO DA EMPRESA 2*/
+    
+  /* Posição e estilo - caixa exclusão */
+  .confirma-exclusao {
+    background-color: #E5E8F2;
+    color: #373C49;
+    box-shadow: 0px 4px 41px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    position: absolute;
+    top: 150%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 50vh;
+    padding: 20px;
+    text-align: center;
+   }
+
+  /*16-CADASTRAR EMPREGADO 5*/
+
+  .btnadicionar {
+    left: 50px;
+    margin-right: 130px;
+    box-sizing: border-box;
+    position: absolute;
+    background: #124559;
+    border: 1px solid #000000;
+    color: white;
+    backdrop-filter: blur(2px);
+    padding: 12px 16px;
+    font-size: 16px; /* Set a font size */
+    border-radius: 10px;
+    cursor: pointer; /* Mouse pointer on hover */
+   }
+
+  .adicionar, .cadastrar{
+    left:100px;
+    box-sizing: border-box;
+    position: absolute;
+    border: none;
+    color: #124559;
+    backdrop-filter: blur(2px);
+    padding: 12px 16px;
+    font-size: 18px; /* Set a font size */
+    border-radius: 10px;
+    cursor: pointer; /* Mouse pointer on hover */
+   }
+
+
+
+
+  
