@@ -18,8 +18,10 @@ public interface EmpresaDAO {
 
 	void atualizarContatoEmpresa(Empresa empresa, Long id_contato);
 	
-	boolean verificarLoginSenhaNoBanco(String cnpj, String senha);
+	boolean verificarLoginSenha(String cnpj, String senha);
 
 	List<Empresa> recuperarEmpresas();
+	
+	Empresa recuperarEmpresa(String cnpj);
 
 }
