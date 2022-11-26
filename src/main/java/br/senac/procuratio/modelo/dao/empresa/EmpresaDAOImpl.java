@@ -9,8 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.cj.protocol.Resultset;
-
 import br.senac.procuratio.modelo.entidade.contato.Contato;
 import br.senac.procuratio.modelo.entidade.empresa.Empresa;
 import br.senac.procuratio.modelo.entidade.endereco.Endereco;
@@ -238,7 +236,7 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 		}
 	}
 
-	public boolean verificarLoginSenhaNoBanco(String cnpj, String senha) {
+	public boolean verificarLoginSenha(String cnpj, String senha) {
 		
 		Connection conexao = null;
 		PreparedStatement consulta = null;
@@ -342,10 +340,74 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 				erro.printStackTrace();
 			}
 		}
-
+		
 		return empresas;
 	}
 
+	public Empresa recuperarEmpresa(String cnpj) {
+
+		Connection conexao = null;
+		PreparedStatement consulta = null;
+		ResultSet resultado = null;
+		Empresa empresa = null;
+
+		try {
+
+			conexao = conectarBanco();
+			consulta = conexao.prepareStatement("SELECT nome_empresa, cnpj_empresa, logradouro_endereco, numero_endereco, complemento_endereco, bairro_endereco, cidade_endereco, uf_endereco, cep_endereco, telefone_contato, celular_contato, email_contato FROM empresa e inner join endereco en on e.id_endereco = en.id_endereco inner join contato c on e.id_contato = c.id_contato WHERE e.cnpj_empresa = ?");
+			
+			consulta.setString(1, cnpj);
+			resultado = consulta.executeQuery();
+
+			while (resultado.next()) {
+				
+				String telefone = resultado.getString("telefone_contato");
+				String celular = resultado.getString("celular_contato");
+				String email = resultado.getString("email_contato");
+				Contato contato = new Contato(telefone, celular, email);
+
+				String logradouro = resultado.getString("logradouro_endereco");
+				Short numero = resultado.getShort("numero_endereco");
+				String complemento = resultado.getString("complemento_endereco");
+				String bairro = resultado.getString("bairro_endereco");
+				String cidade = resultado.getString("cidade_endereco");
+				String uf = resultado.getString("uf_endereco");
+				String cep = resultado.getString("cep_endereco");
+				Endereco endereco = new Endereco(logradouro, numero, complemento, bairro, cidade, uf, cep);
+				
+				String nome = resultado.getString("nome_empresa");
+				String cnpj1 = resultado.getString("cnpj_empresa");
+				
+				empresa = new Empresa(nome, cnpj1, endereco, contato);
+				
+			}
+
+		} catch (SQLException erro) {
+			erro.printStackTrace();
+		}
+
+		finally {
+
+			try {
+
+				if (resultado != null)
+					resultado.close();
+
+				if (consulta != null)
+					consulta.close();
+
+				if (conexao != null)
+					conexao.close();
+
+			} catch (SQLException erro) {
+
+				erro.printStackTrace();
+			}
+		}
+		return empresa;
+		
+	}
+	
 	private Connection conectarBanco() throws SQLException {
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/procuratio?user=root&password=root");
 
