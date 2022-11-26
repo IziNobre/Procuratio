@@ -2,8 +2,6 @@ package br.senac.procuratio.controle.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,24 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.senac.procuratio.modelo.dao.contato.ContatoDAO;
 import br.senac.procuratio.modelo.dao.contato.ContatoDAOImpl;
-import br.senac.procuratio.modelo.dao.dependente.DependenteDAO;
-import br.senac.procuratio.modelo.dao.dependente.DependenteDAOImpl;
-import br.senac.procuratio.modelo.dao.empregado.EmpregadoDAO;
-import br.senac.procuratio.modelo.dao.empregado.EmpregadoDAOImpl;
 import br.senac.procuratio.modelo.dao.empresa.EmpresaDAO;
 import br.senac.procuratio.modelo.dao.empresa.EmpresaDAOImpl;
 import br.senac.procuratio.modelo.dao.endereco.EnderecoDAO;
 import br.senac.procuratio.modelo.dao.endereco.EnderecoDAOImpl;
-import br.senac.procuratio.modelo.dao.funcao.FuncaoDAO;
-import br.senac.procuratio.modelo.dao.funcao.FuncaoDAOImpl;
 import br.senac.procuratio.modelo.entidade.contato.Contato;
 import br.senac.procuratio.modelo.entidade.empresa.Empresa;
 import br.senac.procuratio.modelo.entidade.endereco.Endereco;
-import br.senac.procuratio.modelo.entidade.funcao.Funcao;
-import br.senac.procuratio.modelo.entidade.pessoa.empregado.Empregado;
-import br.senac.procuratio.modelo.enumeracao.contrato.Contrato;
-import br.senac.procuratio.modelo.enumeracao.escolaridade.Escolaridade;
-import br.senac.procuratio.modelo.enumeracao.genero.Genero;
 
 @WebServlet("/")
 public class Servlet extends HttpServlet{
@@ -85,12 +72,12 @@ public class Servlet extends HttpServlet{
 								
 				break;
 */				
-			case "/empresas/novo":
+			case "/nova-empresa":
 				mostrarFormularioNovaEmpresa(request, response);
 				
 				break;
 			
-			case  "/empresas/inserir":
+			case  "/inserir-empresa":
 				cadastrarEmpresa(request, response); 
 				
 				break;
@@ -110,14 +97,7 @@ public class Servlet extends HttpServlet{
 				
 				break;
 			
-				
-			case "/painel-principal/colaboradores":
-				listarEmpregados(request, response);
-				deletarEmpregado(request, response); //** Verificar se fica neste path
-			
-				break;
-					
-				default:
+			default:
 				listarFuncionalidades(request, response);
 				break;
 */			}
@@ -126,48 +106,14 @@ public class Servlet extends HttpServlet{
 			throw new ServletException(ex);
 		}
 	}
-/*	
-	private void mostrarFormularioLogin(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-login.jsp");
-		dispatcher.forward(request, response);
-	}
-	
-	private boolean autenticarLogin(HttpServletRequest request, HttpServletResponse response) //**
-			throws SQLException, IOException {
+/*
 
-		String cnpj = request.getParameter("cnpj");
-		String senhaLogin = request.getParameter("senha");
-		daoEmpresa.verificarLoginSenhaNoBanco(new Empresa(cnpj, senhaLogin));
-		response.sendRedirect("painel-principal"); //**
-	}
-		
-	
-	private void novoLogin(HttpServletRequest request, HttpServletResponse response) //**
-			throws SQLException, IOException {
-
-		String cnpj = request.getParameter("cnpj");
-		String senhaLogin = request.getParameter("senha");
-		daoEmpresa.autenticarLogin(new Empresa(cnpj, senhaLogin));
-		response.sendRedirect("home"); //**
-	}
-	
-	
-	private void listarFuncionalidades(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("funcionalidades.jsp");
-		dispatcher.forward(request, response);
-	}
-
-
-	private void listarEmpresa(HttpServletRequest request, HttpServletResponse response)
+	private void listarEmpresas(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		
-		Empresa empresa = daoEmpresa.recuperarEmpresa();
+		List<Empresa> empresas = daoEmpresa.recuperarEmpresas();
 		request.setAttribute("empresa", empresa);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("listar-empresa.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("listar-empresas.jsp");
 		dispatcher.forward(request, response);
 	}
 
