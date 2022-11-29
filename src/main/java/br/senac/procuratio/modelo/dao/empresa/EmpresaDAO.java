@@ -1,7 +1,6 @@
 package br.senac.procuratio.modelo.dao.empresa;
 
 import java.util.List;
-
 import br.senac.procuratio.modelo.entidade.empresa.Empresa;
 
 public interface EmpresaDAO {
@@ -10,18 +9,12 @@ public interface EmpresaDAO {
 
 	void deletarEmpresa(Empresa empresa);
 	
-	void atualizarNomeEmpresa(Empresa empresa, String novoNome);
+	List<Empresa> recuperarEmpresas();
 	
-	void atualizarEnderecoEmpresa(Empresa empresa, Long id_enderecoo);
-
-	void atualizarCnpjEmpresa(Empresa empresa, String novoCnpj);
-
-	void atualizarContatoEmpresa(Empresa empresa, Long id_contato);
+	void editarEmpresa(Empresa empresa);
 	
 	boolean verificarLoginSenha(String cnpj, String senha);
 
-	List<Empresa> recuperarEmpresas();
-	
 	Empresa recuperarEmpresa(String cnpj);
 
 }

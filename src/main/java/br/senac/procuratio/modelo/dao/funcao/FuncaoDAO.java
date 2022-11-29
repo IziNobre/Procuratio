@@ -6,13 +6,13 @@ import br.senac.procuratio.modelo.entidade.funcao.Funcao;
 
 public interface FuncaoDAO {
 	
-	Funcao cadastrarFuncao(Funcao funcao);
+	Funcao cadastrarFuncao(Funcao funcao, String cnpjEmpresa) throws ClassNotFoundException;
 	
-	void deletarFuncao(Funcao funcao);
+	void deletarFuncao(Funcao funcao) throws ClassNotFoundException;
 	
-	void editarNomeFuncao(Funcao funcao, String novoNome);
+	void editarNomeFuncao(Funcao funcao, String novoNome) throws ClassNotFoundException;
 	
-	List<Funcao> recuperarFuncoes();
+	List<Funcao> recuperarFuncoes() throws ClassNotFoundException;
 
 
 }

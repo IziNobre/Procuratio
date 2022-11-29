@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import br.senac.procuratio.modelo.entidade.contato.Contato;
 import br.senac.procuratio.modelo.entidade.empresa.Empresa;
 import br.senac.procuratio.modelo.entidade.endereco.Endereco;
@@ -236,6 +235,33 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 		}
 	}
 
+	public void editarEmpresa(Empresa empresa) {
+        Connection conexao = null;
+        PreparedStatement update = null;
+        try {
+            conexao = conectarBanco();
+            update = conexao.prepareStatement("UPDATE empresa SET nome_empresa = ?, cnpj_empresa = ?, senha_login_empresa = ?, id_endereco = ?, id_contato = ?, WHERE cnpj_empresa = ?");
+            update.setString(1, empresa.getNome());
+            update.setString(2, empresa.getCnpj());
+            update.setString(3, empresa.getSenhaLogin());
+            update.setLong(4, empresa.getEndereco().getId());
+            update.setLong(5, empresa.getContato().getId());
+            update.execute();
+        } catch (SQLException erro) {
+            erro.printStackTrace();
+        }
+        finally {
+            try {
+                if (update != null)
+                    update.close();
+                if (conexao != null)
+                    conexao.close();
+            } catch (SQLException erro) {
+                erro.printStackTrace();
+            }
+        }
+    }
+
 	public boolean verificarLoginSenha(String cnpj, String senha) {
 		
 		Connection conexao = null;
@@ -408,9 +434,14 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 		
 	}
 	
-	private Connection conectarBanco() throws SQLException {
+	private Connection conectarBanco() throws SQLException{
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block e.printStackTrace();
+	}
+
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/procuratio?user=root&password=root");
 
 	}
-
 }
