@@ -825,8 +825,13 @@ label {
     padding: 20px;
     position: absolute;
     top: 50px;
+<<<<<<< Updated upstream
     width: 40vw;
     height: 510px;
+=======
+    width: 39.5vw;
+    height: 480px;
+>>>>>>> Stashed changes
     left: 108px;
     top: 180px;
 
@@ -858,9 +863,15 @@ label {
     padding: 20px;
     position: absolute;
     top: 50px;
+<<<<<<< Updated upstream
     width: 40vw;
     height: 510px;
     left: 48.1%;
+=======
+    width: 39.5vw;
+    height: 480px;
+    left: 46.3%;
+>>>>>>> Stashed changes
     top: 180px;
 
     background: #FFFFFF;
