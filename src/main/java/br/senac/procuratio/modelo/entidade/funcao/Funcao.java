@@ -4,6 +4,7 @@ public class Funcao {
 
 	private Long id;
 	private String nome;
+	private String cnpjEmpresa;
 
 	public Funcao(Long id) {
 		this.id = id;
@@ -12,7 +13,14 @@ public class Funcao {
 	        
 	    this.nome = nome;
 	}
-    public Funcao(Long id, String nome) {
+	
+	public Funcao(String nome, String cnpjEmpresa) {
+	        
+	    this.nome = nome;
+	    this.cnpjEmpresa = cnpjEmpresa;
+	
+	}
+    public Funcao(Long id, String nome, String cnpjEmpresa) {
         
     	this.id = id;
     	this.nome = nome;
@@ -33,6 +41,13 @@ public class Funcao {
     public void setNome(String nome) {
         this.nome = nome;
     }
+	public String getCnpjEmpresa() {
+        return cnpjEmpresa;
+    }
+
+    public void setCnpjEmpresa(String cnpjEmpresa) {
+        this.cnpjEmpresa = cnpjEmpresa;
+    }
 
     public boolean equals(Object objeto) {
         if (this == objeto) {
@@ -46,7 +61,7 @@ public class Funcao {
 		
         Funcao funcao = (Funcao) objeto;
         
-        return this.getId() == funcao.getId() && this.getNome().equals(funcao.getNome());
+        return this.getId() == funcao.getId() && this.getNome().equals(funcao.getNome()) && funcao.getCnpjEmpresa().equals(funcao.getCnpjEmpresa());
     }
 	
 
