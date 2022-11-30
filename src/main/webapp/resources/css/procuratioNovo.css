@@ -3,198 +3,293 @@
 /*Fundo tela*/
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
   margin: 0;
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
   color: white;
   border-radius: 10px;
-  
 }
 
 /*Para as informações Ficarem uma do lado da outra - HOME*/
-header{
-  display:flex;
+header {
+  display: flex;
   justify-content: space-between;
   padding: 10px;
-  background-color: #2E747D;
+  background-color: #2e747d;
   align-items: center;
   left: 0;
   right: 0;
   top: 0;
 }
 
-header .simboloP{
+header .simboloP {
   height: 60px;
   width: 60px;
-  background-color: #0F1F25;
-  color: #2E747D;
+  background-color: #0f1f25;
+  color: #2e747d;
   border-radius: 100%;
   font-size: 50px;
-  font-weight: bold;
-  font-family: 'Raleway';
-  font-style: normal;
+  font-weight: 700;
+  font-family: "Raleway";
   text-align: center;
 }
 
-header .logo{
+header .logo {
   font-size: 32px;
-  color: #0A1D2F;
-  font-weight: bold;
-  font-family: 'Raleway';
-  font-style: normal;
+  color: #0a1d2f;
+  font-weight: 700;
+  font-family: "Raleway";
 }
 
-.opcoes{
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 13px;
+}
+
+a.opcoes {
   text-decoration: none;
-  color: #17303A;
-  
+  color: #17303a;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 100%;
 }
 
-header .btn-cadastrar, .btn-login, .btn-minhaConta{
+a.opcoes:hover,
+a.opcoes.selecionado {
+  color: #ffffff !important;
+}
+
+.btn {
   float: right;
+  font-weight: 500;
   font-size: 16px;
-  background: #0A83C1;
+  background-color: #0a83c1;
+  border: 2px solid #0a83c1;
   backdrop-filter: blur(2px);
-  border-radius: 8px;  
-  color: #FFFFFF;
+  border-radius: 8px;
+  color: #ffffff;
   cursor: pointer;
-  border: none;
   padding: 10px;
+  min-width: 163px;
 }
 
-header .btn-cadastrar, .btn-login haver{
-  background-color: #2E747D;
+.row {
+  display: flex;
 }
 
-.containerhome{
-  height: 100vh;
+.btn.btn-cadastrar {
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  background-color: #2e747d;
 }
 
-.cima{
-  flex: 1;
-  background-image: url('Imagens/custos-logísticos-de-transporte\ 1.png'); 
-  opacity: 10;
-  height: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
+.btn-header-container {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.banner {
+  position: relative;
+  height: 675px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.banner-content {
+  margin-right: 37px;
+}
+
+.banner::after {
+  content: "";
+  background-image: linear-gradient(
+      270.51deg,
+      rgba(18, 69, 89, 0.5) 45.19%,
+      rgba(0, 0, 0, 0.5) 71%,
+      rgba(0, 0, 0, 0) 97.93%
+    ),
+    url("Imagens/banner.png");
+  backdrop-filter: blur(2px);
   background-size: cover;
-  padding: 10px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.75;
+  z-index: -1;
 }
 
-.cima h1{
+.banner .coluna-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 13px;
+  align-items: flex-start;
+}
+
+.banner .coluna-1 > div > h1 {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 100%;
+}
+div.banner-caption {
+  font-size: 20px;
+  line-height: 100%;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.cima h1 {
   margin-left: 70%;
   margin-top: 5%;
   width: 555px;
   top: 289px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-size: 50px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
-.cima a{
+.cima a {
   margin-left: 50%;
-
-  font-family: 'Roboto';
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
-  color: #FFFFFF;
+  color: #ffffff;
   flex: none;
   order: 0;
   flex-grow: 0;
 }
 
-.cima .saibamais{
-  margin-top: 5px;
-  margin-left: 70%;
-  color: #FFFFFF;
-  font-size: 16px;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 24px;
+.btn.saibamais {
+  color: #ffffff;
+  border-color: #264246;
   background: #264246;
-  border-radius: 8px;
-  cursor: pointer;
-
 }
 
-.meio{
-  flex: 1;
-  background-image: url('Imagens/mapbox-ZT5v0puBjZI-unsplash\ 1.png');
-  height: 25%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: center;
-  padding: 10px;
+.quem-somos {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 32px;
+  gap: 94px;
+  color: #17303a;
 }
 
-.meio .simboloP{
+.quem-somos .coluna-1 > img {
+  max-width: 422px;
+  height: auto;
+}
+
+.quem-somos .coluna-2 > h1 {
+  margin-top: 46px;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 100%;
+}
+
+.quem-somos .coluna-2 .texto > p {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  color: #333333;
+}
+
+.meioSimboloLogo {
+  display: flex;
+}
+
+.quem-somos .simboloP {
   width: 50px;
   height: 50px;
   border-radius: 100%;
-  background-color: #0F1F25;
-  color: #2E747D;
+  background-color: #0f1f25;
+  color: #d3d3d3;
   font-size: 40px;
   font-weight: bold;
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-style: normal;
   text-align: center;
 }
 
-.meio .logo{
+.quem-somos .logo {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
   font-size: 32px;
-  color: #0A1D2F;
-  font-weight: bold;
-  font-family: 'Raleway';
-  font-style: normal;
+  line-height: 38px;
 }
 
-.baixo{
-  font-size: 20px;
-  flex: 1;
-  color: #FFFFFF;
-  background: #17303A;
-  height: 30%;
-  align-items: center;
-  padding: 10px;
-}
-
-.mapa{
-  padding: 10px;
+.mapa {
   display: flex;
-  overflow:hidden;
-  padding-bottom:15%;
-  position:relative;
-  height:0;
-}
-
-.mapa iframe{
+  justify-content: space-between;
   padding: 10px;
-  display:flex;
-  left:0;
-  top: 0;
-  height:50%;
-  width:20%;
-  position:absolute;
-  margin-left: 150px;
+  overflow: hidden;
+  padding-bottom: 15%;
+  position: relative;
+  height: 0;
 }
 
-footer{
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #0F1F25;
+.mapa iframe {
+  width: 259px;
+  height: 193px;
+  border: none;
+}
+
+footer .baixo {
+  display: flex;
+  background-color: #17303a;
+  color: #ffffff;
+  padding: 58px;
+  gap: 13px;
+}
+
+footer .baixo .coluna-1 {
+  margin-right: 62px;
+  display: flex;
+  flex-direction: column;
+}
+
+footer .baixo .coluna-1 > h3 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 100%;
+  margin-bottom: 8px;
+}
+
+footer .baixo .coluna-1 > a {
+  font-weight: 400;
+  font-size: 20px;
+  font-style: normal;
+  color: #ffffff;
+  margin-top: 8 px;
+  text-decoration: none;
+}
+
+.copyright {
+  background-color: #0f1f25;
+  padding: 16px;
   text-align: center;
-  padding: 10px;
+  color: #ffffff;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
 }
 
 
@@ -204,7 +299,7 @@ footer{
   flex: 1;
   background-image: url('Imagens/custos-logísticos-de-transporte\ 1.png'); 
   opacity: 0.6;
-  height: 120vh;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -222,10 +317,10 @@ footer{
   left: 0;
   top: 0;
   right: 0;
-  width: 745px;
-  height: 440px;
+  width: 50vw;
+  height: 350px;
   
-  left: 64px;
+  left: 0px;
   top: 70px;
 
   font-family: 'Roboto';
@@ -239,11 +334,10 @@ footer{
 
 .containerSimboloPeLogo{
   display:flex;
-  justify-content: space-between;
   margin: auto;
   border-radius: 20px;
   background-color: #FFFFFF;
-  padding: 10px;
+  padding: 20px;
 
   position: absolute;
   
@@ -252,27 +346,25 @@ footer{
   left: 0;
   top: 0;
   right: 0;
-  width: 745px;
-  height: 60px;
+  width: 50vw;
+  height: 150px;
   
-  left: 64px;
-  top: 50px;
+  left: 0;
+  top: 130px;
 }
 
 .containerSimboloPeLogo .logo{
-  
   font-family: 'Raleway';
   font-size: 25px;
   color: #0A1D2F;
   flex-grow: 0;
-  margin-left: 40px;
-  align-items: center;
+  margin-left: 10px;
   text-align: left;
   
 }
 
 .containerSimboloPeLogo .simboloP{
-
+  padding: 5px;
   background: #0F1F25;
   color: #FFFFFF;
   border-radius: 100%;
@@ -286,13 +378,14 @@ footer{
 
 }
 
-.containerBemVindo .btn-entrar, .btn-cadastrar {
+.containerBemVindo > .btn-entrar,
+.containerBemVindo > .btn-cadastrar {
   float: right;
   font-size: 25px;
-  background: #0A83C1;
+  background: #0a83c1;
   backdrop-filter: blur(2px);
-  border-radius: 8px;  
-  color: #FFFFFF;
+  border-radius: 8px;
+  color: #ffffff;
   cursor: pointer;
   border: none;
   padding: 10px;
@@ -345,6 +438,52 @@ label {
 
   /*TELA CADASTRAR-SE*/
 
+  .containerSimboloPeLogo2{
+    display:flex;
+    margin: auto;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    padding: 20px;
+  
+    position: absolute;
+    
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: center;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 50vw;
+    height: 100px;
+    
+    left: 0;
+    top: 30px;
+  }
+  
+  .containerSimboloPeLogo2 .logo{
+    font-family: 'Raleway';
+    font-size: 25px;
+    color: #0A1D2F;
+    flex-grow: 0;
+    margin-left: 10px;
+    text-align: left;
+    
+  }
+  
+  .containerSimboloPeLogo2 .simboloP{
+    padding: 5px;
+    background: #0F1F25;
+    color: #FFFFFF;
+    border-radius: 100%;
+    font-size: 30px;
+    height: 40px;
+    width: 40px;
+    font-weight: bold;
+    font-family: 'Raleway';
+    font-style: normal;
+    text-align: center;
+  
+  }
+
   .containerBemVindoCadastrar{
     height: 100vh;
     margin: auto;
@@ -359,11 +498,10 @@ label {
     left: 0;
     top: 0;
     right: 0;
-    width: 745px;
-    height: 600px;
+    width: 100%;
+    height: 530px;
     
-    left: 64px;
-    top: 30px;
+    top: 60px;
   
     font-family: 'Roboto';
     font-style: normal;
@@ -373,28 +511,7 @@ label {
     color: #000000;
     
   }
-  
-  .containerBemVindoCadastrar .logo{
-    font-family: 'Raleway';
-    font-size: 32px;
-    color: #0A1D2F;
-    flex-grow: 0;
-    margin-left: 40px;
     
-  }
-  
-  .containerBemVindoCadastrar .simboloP{
-    width: 41px;
-    height: 41px;
-    left: 0px;
-    top: 0px;
-    background: #0F1F25;
-    color: #FFFFFF;
-    border-radius: 100%;
-    font-size: 30px;
-  
-  }
-  
   .containerBemVindoCadastrar .btn-cadastrar {
     float: right;
     font-size: 25px;
@@ -419,10 +536,10 @@ label {
     box-sizing: border-box;
 
     position: absolute;
-    width: 250px;
+    width: 20vw;
     height: 300px;
-    left: 4%;
-    top: 150px;
+    left: 95px;
+    top: 25%;
 
     background: #FFFFFF;
 
@@ -445,7 +562,7 @@ label {
     font-family: 'Roboto';
     font-style: normal;
     font-size: 16px;
-    margin-left: 40px;  
+    margin-left: 25%;  
     width: 163px;
     height: 40px;
     background: #0A83C1;
@@ -463,10 +580,10 @@ label {
     box-sizing: border-box;
 
     position: absolute;
-    width: 250px;
+    width: 20vw;
     height: 300px;
-    left: 108px;
-    top: 150px;
+    left: 120px;
+    top: 25%;
 
     background: #FFFFFF;
 
@@ -490,7 +607,7 @@ label {
     font-family: 'Roboto';
     font-style: normal;
     font-size: 16px;
-    margin-left: 40px;  
+    margin-left: 25%;  
     width: 163px;
     height: 40px;
     background: #0A83C1;
@@ -509,11 +626,11 @@ label {
     color:  #17303A;
     box-sizing: border-box;
     position: absolute;
-    width: 250px;
+    width: 20vw;
     height: 300px;
-    left: 108px;
-    top: 150px;
-  
+    left: 60px;
+    top: 25%; 
+
     background: #FFFFFF;
   
     border: 1px solid #0F1F25;
@@ -536,7 +653,7 @@ label {
     font-family: 'Roboto';
     font-style: normal;
     font-size: 16px;
-    margin-left: 40px;  
+    margin-left: 25%;  
     width: 163px;
     height: 40px;
     background: #0A83C1;
@@ -555,11 +672,11 @@ label {
     box-sizing: border-box;
   
     position: absolute;
-    width: 250px;
+    width: 20vw;
     height: 300px;
-    left: 108px;
-    top: 150px;
-  
+    left: 0px;
+    top: 25%;  
+
     background: #FFFFFF;
   
     border: 1px solid #0F1F25;
@@ -582,7 +699,7 @@ label {
     font-family: 'Roboto';
     font-style: normal;
     font-size: 16px;
-    margin-left: 40px;  
+    margin-left: 25%;  
     width: 163px;
     height: 40px;
     background: #0A83C1;
@@ -595,11 +712,8 @@ label {
     /*CROUD EMPRESAS*/
 
   .caminhoCroudEmpresas {
-    position: absolute;
     width: 100vw;
-    left: 0px;
     background: #41585B;
-    padding: 10px;
   }
 
   .buscarEmpresa{
@@ -799,16 +913,65 @@ label {
 
   /*CADASTRO DE EMPRESA */
 
+  .cadastroEmpresaCard {
+    margin: 40px 108px 0 108px;
+  }
+
+  .cadastroEmpresaCardBody {
+    margin-bottom: 3%;
+    padding: 20px 94px 0;
+    background-color: white;
+    color:#333333;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .cadastroEmpresaCardField {
+    flex: 0 1 45%;
+  }
+  .cadastroEmpresaCardAddress {
+    flex: 0 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .cadastroEmpresaCardButtons {
+    flex: 0 0 100%;
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+  }
+  .cadastroEmpresaCardButtons .btn-cadastrarEmpresa {
+    font-size: 16px;
+    background: #0A83C1;
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+    padding: 12px 24px;
+  }
+  .cadastroEmpresaCardButtons .btn-cancelar {
+    font-size: 16px;
+    background: #FFFFFF;
+    color: #356F8D;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border-color: #356F8D;
+    padding: 12px 24px;
+    margin-left: auto;
+  }
+
   .novoCadastroEmpresa{
-    padding: 20px;
-    margin-left: 50px;
-    position: absolute;
-    width: 78.8vw;
+    width: 100%;
     height: 55px;
-    left: 108px;
-    top: 130px; 
     background: #333333;
     border-radius: 20px 20px 0px 0px;
+    padding-left: 94px;
 
     font-family: 'Roboto';
     font-style: normal;
@@ -825,13 +988,8 @@ label {
     padding: 20px;
     position: absolute;
     top: 50px;
-<<<<<<< Updated upstream
-    width: 40vw;
-    height: 510px;
-=======
     width: 39.5vw;
     height: 480px;
->>>>>>> Stashed changes
     left: 108px;
     top: 180px;
 
@@ -863,15 +1021,9 @@ label {
     padding: 20px;
     position: absolute;
     top: 50px;
-<<<<<<< Updated upstream
-    width: 40vw;
-    height: 510px;
-    left: 48.1%;
-=======
     width: 39.5vw;
     height: 480px;
     left: 46.3%;
->>>>>>> Stashed changes
     top: 180px;
 
     background: #FFFFFF;
@@ -931,7 +1083,7 @@ label {
     padding: 20px;
     margin-left: 50px;
     position: absolute;
-    width: 1000px;
+    width: 78.8vw;
     height: 55px;
     left: 108px;
     top: 130px; 
@@ -1165,5 +1317,68 @@ label {
         border-radius: 8px;
     
       }
+
+
+
+      
+    /*CROUD FUNÇÕES*/
+
+  .caminhoCroudFuncoes {
+    position: absolute;
+    width: 100vw;
+    left: 0px;
+    background: #41585B;
+    padding: 10px;
+  }
+
+  .buscarFuncao{
+    margin: auto;
+    border-radius: 20px;
+    background-color: #D3D3D3;
+  
+    position: center;
+    width: 700px;
+    
+    top: 150px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 16px;
+    color: #000000;
+  }
+
+  .buscarFuncao2{
+    display:flex;
+    justify-content: space-between;
+    margin: auto;
+    border-radius: 20px;
+    background-color: #D3D3D3;
+  
+    position: center;
+    width: 700px;
+    
+    top: 150px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 16px;
+    color: #000000;
+  }
+  
+
+  .buscarFuncao2 .btn-novaFuncao{
+    margin-left: 10px;
+    margin-top: 5px;
+    color: #FFFFFF;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 16px;
+    width: 150px;
+    height: 40px;
+    background: #0A83C1;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+
+
 
 
