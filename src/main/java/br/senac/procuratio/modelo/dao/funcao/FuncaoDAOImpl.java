@@ -24,6 +24,7 @@ public class FuncaoDAOImpl implements FuncaoDAO {
 			insert = conexao.prepareStatement("INSERT INTO funcao (nome_funcao, cnpj_empresa) VALUES (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
 	
 			insert.setString(1, funcao.getNome());
+			insert.setString(2, funcao.getCnpjEmpresa());
 
 			insert.execute();
 			
@@ -53,6 +54,41 @@ public class FuncaoDAOImpl implements FuncaoDAO {
 		}
 
 		return funcao;
+	}
+
+	public void editarFuncao(Funcao funcao) {
+
+		Connection conexao = null;
+		PreparedStatement update = null;
+
+		try {
+
+			conexao = conectarBanco();
+			update = conexao.prepareStatement("UPDATE funcao SET nome_funcao = ?, cnpj_empresa = ? WHERE nome_funcao = ?");
+
+			update.setString(1, funcao.getNome());
+			update.setString(2, funcao.getCnpjEmpresa());
+			update.execute();
+
+		} catch (SQLException erro) {
+			erro.printStackTrace();
+		}
+
+		finally {
+
+			try {
+
+				if (update != null)
+					update.close();
+
+				if (conexao != null)
+					conexao.close();
+
+			} catch (SQLException erro) {
+
+				erro.printStackTrace();
+			}
+		}
 	}
 
 	public void deletarFuncao(Funcao funcao) {
@@ -89,43 +125,6 @@ public class FuncaoDAOImpl implements FuncaoDAO {
 			}
 		}
 
-	}
-
-	public void editarNomeFuncao(Funcao funcao, String novoNome) {
-		Long teste = funcao.getId();
-		System.out.println(teste);
-
-		Connection conexao = null;
-		PreparedStatement update = null;
-
-		try {
-
-			conexao = conectarBanco();
-			update = conexao.prepareStatement("UPDATE funcao SET nome_funcao = ? WHERE nome_funcao = ?");
-
-			update.setString(1, novoNome);
-			update.setString(2, funcao.getNome());
-			update.execute();
-
-		} catch (SQLException erro) {
-			erro.printStackTrace();
-		}
-
-		finally {
-
-			try {
-
-				if (update != null)
-					update.close();
-
-				if (conexao != null)
-					conexao.close();
-
-			} catch (SQLException erro) {
-
-				erro.printStackTrace();
-			}
-		}
 	}
 
 	public List<Funcao> recuperarFuncoes() {
