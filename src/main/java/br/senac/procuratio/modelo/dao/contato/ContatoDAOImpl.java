@@ -17,7 +17,7 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 			
 			Connection conexao = null;
 			PreparedStatement insert = null;
-
+		
 			try {
 
 				conexao = conectarBanco();
@@ -68,7 +68,8 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 				update.setString(1, contato.getTelefone());
 				update.setString(2, contato.getCelular());
 				update.setString(3, contato.getEmail());
-        update.setLong(4, contato.getId());
+				update.setLong(4, contato.getId());
+				
 				update.execute();
 
 			} catch (SQLException erro) {
@@ -90,10 +91,10 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 					erro.printStackTrace();
 				}
 			}
-	}
+		}
 		
-		public void deletarContato(Contato contato) {
-    
+		public void deletarContato(Contato contato){
+			
 			Long teste = contato.getId();
 			System.out.println(teste);
 			
@@ -130,7 +131,7 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 			} 
 		}
 		
-		public Contato recuperarContatoEmpregado(String cpf_empregado){
+		public Contato recuperarContatoEmpresa(String cnpjEmpresa) {
 			
 			Connection conexao = null;
 			PreparedStatement consulta = null;
@@ -141,9 +142,9 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 
 				conexao = conectarBanco();
 				consulta = conexao.prepareStatement("SELECT e.id_contato, telefone_contato, celular_contato, email_contato "
-						+ "FROM contato c join empregado e on c.id_contato = e.id_contato WHERE cpf_empregado = ?");
+						+ "FROM contato c join empresa e on c.id_contato = e.id_contato WHERE cnpj_empresa = ?");
 
-				consulta.setString(1, cpf_empregado);
+				consulta.setString(1, cnpjEmpresa);
 	            resultado = consulta.executeQuery();
 	            		
 					while (resultado.next()) {
@@ -180,10 +181,63 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 				}
 			}
 
-			return contato
-      }
-      
-      public List<Contato> recuperarContatosCadastrados() {
+			return contato;
+		}
+
+		public Contato recuperarContatoEmpregado(String cnpjEmpregado) {
+			
+			Connection conexao = null;
+			PreparedStatement consulta = null;
+			ResultSet resultado = null;
+			Contato contato = null;
+
+			try {
+
+				conexao = conectarBanco();
+				consulta = conexao.prepareStatement("SELECT e.id_contato, telefone_contato, celular_contato, email_contato "
+						+ "FROM contato c join empregado e on c.id_contato = e.id_contato WHERE cpf_empregado = ?");
+
+				consulta.setString(1, cnpjEmpregado);
+	            resultado = consulta.executeQuery();
+	            		
+					while (resultado.next()) {
+
+					Long id = resultado.getLong("id_contato");
+					String telefone = resultado.getString("telefone_contato");
+					String celular = resultado.getString("celular_contato");
+					String email = resultado.getString("email_contato");
+					
+					contato = new Contato(id, telefone, celular, email);
+					
+				}
+
+			} catch (SQLException erro) {
+				erro.printStackTrace();
+			}
+
+			finally {
+
+				try {
+
+					if (resultado != null)
+						resultado.close();
+
+					if (consulta != null)
+						consulta.close();
+
+					if (conexao != null)
+						conexao.close();
+
+				} catch (SQLException erro) {
+
+					erro.printStackTrace();
+				}
+			}
+
+			return contato;
+		}
+		
+		public List<Contato> recuperarContatosCadastrados(){
 			
 			Connection conexao = null;
 			Statement consulta = null;
@@ -242,5 +296,4 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 			return DriverManager.getConnection("jdbc:mysql://localhost:3306/procuratio?user=root&password=root");
 
 		}
-
 	}
