@@ -6,8 +6,8 @@ public interface EnderecoDAO {
 	
 	Endereco cadastrarEndereco(Endereco endereco);
 	
-	void editarEndereco(Endereco endereco);
-	
+	void editarEndereco(Endereco endereco);	
+		
 	void deletarEndereco(Endereco endereco);
 	
 	Endereco recuperarEnderecosEmpregado(String cpf_empregado);

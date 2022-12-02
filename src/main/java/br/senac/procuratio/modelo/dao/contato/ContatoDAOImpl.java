@@ -17,7 +17,7 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 			
 			Connection conexao = null;
 			PreparedStatement insert = null;
-		
+
 			try {
 
 				conexao = conectarBanco();
@@ -68,8 +68,7 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 				update.setString(1, contato.getTelefone());
 				update.setString(2, contato.getCelular());
 				update.setString(3, contato.getEmail());
-				update.setLong(2, contato.getId());
-				
+        update.setLong(4, contato.getId());
 				update.execute();
 
 			} catch (SQLException erro) {
@@ -91,10 +90,10 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 					erro.printStackTrace();
 				}
 			}
-		}
+	}
 		
-		public void deletarContato(Contato contato){
-			
+		public void deletarContato(Contato contato) {
+    
 			Long teste = contato.getId();
 			System.out.println(teste);
 			
@@ -131,7 +130,7 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 			} 
 		}
 		
-		public Contato recuperarContatoEmpregado(String cpf_empregado) {
+		public Contato recuperarContatoEmpregado(String cpf_empregado){
 			
 			Connection conexao = null;
 			PreparedStatement consulta = null;
@@ -181,10 +180,10 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 				}
 			}
 
-			return contato;
-		}
-		
-		public List<Contato> recuperarContatosCadastrados(){
+			return contato
+      }
+      
+      public List<Contato> recuperarContatosCadastrados() {
 			
 			Connection conexao = null;
 			Statement consulta = null;
@@ -243,4 +242,5 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 			return DriverManager.getConnection("jdbc:mysql://localhost:3306/procuratio?user=root&password=root");
 
 		}
+
 	}

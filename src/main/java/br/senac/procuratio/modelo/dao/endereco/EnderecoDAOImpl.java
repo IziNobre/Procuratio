@@ -55,8 +55,8 @@ public class EnderecoDAOImpl implements EnderecoDAO{
 		}
 		return endereco;
 	}
-			
-	public Endereco recuperarEnderecosEmpregado(String cpfEmpregado) {
+		
+	public Endereco recuperarEnderecosEmpregado(String cpfEmpregado){
 		
 		Connection conexao = null;
 		PreparedStatement consulta = null;
@@ -143,8 +143,7 @@ public class EnderecoDAOImpl implements EnderecoDAO{
 	         }
 	     }
 	 }
-
-	
+  		
 	public void deletarEndereco(Endereco endereco) {
 		
 		Connection conexao = null;
