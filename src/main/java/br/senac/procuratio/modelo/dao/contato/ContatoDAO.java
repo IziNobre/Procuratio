@@ -9,9 +9,12 @@ public interface ContatoDAO {
 	Contato cadastrarContato(Contato contato);
 	
 	void editarContato(Contato contato);
-  void deletarContato(Contato contato);
 	
-	Contato recuperarContatoEmpregado(String cpf_empregado);
+	void deletarContato(Contato contato);
+	
+	Contato recuperarContatoEmpresa(String cnpjEmpresa);
+	
+	Contato recuperarContatoEmpregado(String cpfEmpregado);
 		
 	List<Contato> recuperarContatosCadastrados();
 		
