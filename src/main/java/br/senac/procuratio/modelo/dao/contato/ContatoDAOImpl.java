@@ -17,7 +17,7 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 			
 			Connection conexao = null;
 			PreparedStatement insert = null;
-			
+
 			try {
 
 				conexao = conectarBanco();
@@ -56,18 +56,19 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 			return contato;
 		}
 				
-		public void editarTelefoneContato(Contato contato, String novoTelefone) {
+		public void editarContato(Contato contato){
 			Connection conexao = null;
 			PreparedStatement update = null;
 
 			try {
 
 				conexao = conectarBanco();
-				update = conexao.prepareStatement("UPDATE contato SET telefone_contato = ? WHERE id_contato = ?");
+				update = conexao.prepareStatement("UPDATE contato SET telefone_contato = ?, celular_contato = ?, email_contato = ? WHERE id_contato = ?");
 
-				update.setString(1, novoTelefone);
-				update.setLong(2, contato.getId());
-				
+				update.setString(1, contato.getTelefone());
+				update.setString(2, contato.getCelular());
+				update.setString(3, contato.getEmail());
+        update.setLong(4, contato.getId());
 				update.execute();
 
 			} catch (SQLException erro) {
@@ -89,81 +90,10 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 					erro.printStackTrace();
 				}
 			}
-		}
-			
-		public void editarCelularContato(Contato contato, String novoCelular) {
-			Connection conexao = null;
-			PreparedStatement update = null;
-
-			try {
-
-				conexao = conectarBanco();
-				update = conexao.prepareStatement("UPDATE contato SET celular_contato = ? WHERE id_contato = ?");
-
-				update.setString(1, novoCelular);
-				update.setLong(2, contato.getId());
-				
-				update.execute();
-
-			} catch (SQLException erro) {
-				erro.printStackTrace();
-			}
-
-			finally {
-
-				try {
-
-					if (update != null)
-						update.close();
-
-					if (conexao != null)
-						conexao.close();
-
-				} catch (SQLException erro) {
-
-					erro.printStackTrace();
-				}
-			}
-		}
-				
-		public void editarEmailContato(Contato contato, String novoEmail) {
-			
-			Connection conexao = null;
-			PreparedStatement update = null;
-
-			try {
-
-				conexao = conectarBanco();
-				update = conexao.prepareStatement("UPDATE contato SET email_contato = ? WHERE id_contato = ?");
-
-				update.setString(1, novoEmail);
-				update.setLong(2, contato.getId());
-				
-				update.execute();
-
-			} catch (SQLException erro) {
-				erro.printStackTrace();
-			}
-
-			finally {
-
-				try {
-
-					if (update != null)
-						update.close();
-
-					if (conexao != null)
-						conexao.close();
-
-				} catch (SQLException erro) {
-
-					erro.printStackTrace();
-				}
-			}
-		}		
+	}
 		
 		public void deletarContato(Contato contato) {
-			
+    
 			Long teste = contato.getId();
 			System.out.println(teste);
 			
@@ -250,10 +180,10 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 				}
 			}
 
-			return contato;
-		}
-		
-		public List<Contato> recuperarContatosCadastrados() {
+			return contato
+      }
+      
+      public List<Contato> recuperarContatosCadastrados() {
 			
 			Connection conexao = null;
 			Statement consulta = null;
@@ -302,14 +232,15 @@ import br.senac.procuratio.modelo.entidade.contato.Contato;
 			return contatos;
 		}
 		
-			private Connection conectarBanco() throws SQLException {
-				return DriverManager.getConnection("jdbc:mysql://localhost:3306/procuratio?user=root&password=root");
+		private Connection conectarBanco() throws SQLException {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block e.printStackTrace();
+				}
+
+			return DriverManager.getConnection("jdbc:mysql://localhost:3306/procuratio?user=root&password=root");
+
 		}
 
 	}
-
-	
-	
-		
-
-
