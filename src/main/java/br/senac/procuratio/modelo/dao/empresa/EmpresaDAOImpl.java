@@ -56,6 +56,33 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 		return empresa;
 	}
 
+	public void editarEmpresa(Empresa empresa) {
+        Connection conexao = null;
+        PreparedStatement update = null;
+        try {
+            conexao = conectarBanco();
+            update = conexao.prepareStatement("UPDATE empresa SET nome_empresa = ?, cnpj_empresa = ?, senha_login_empresa = ?, id_endereco = ?, id_contato = ?, WHERE cnpj_empresa = ?");
+            update.setString(1, empresa.getNome());
+            update.setString(2, empresa.getCnpj());
+            update.setString(3, empresa.getSenhaLogin());
+            update.setLong(4, empresa.getEndereco().getId());
+            update.setLong(5, empresa.getContato().getId());
+            update.execute();
+        } catch (SQLException erro) {
+            erro.printStackTrace();
+        }
+        finally {
+            try {
+                if (update != null)
+                    update.close();
+                if (conexao != null)
+                    conexao.close();
+            } catch (SQLException erro) {
+                erro.printStackTrace();
+            }
+        }
+    }
+
 	public void deletarEmpresa(Empresa empresa) {
 
 		Connection conexao = null;
@@ -91,222 +118,6 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 		}
 	}
 
-	public void atualizarNomeEmpresa(Empresa empresa, String novoNome) {
-
-		Connection conexao = null;
-		PreparedStatement update = null;
-
-		try {
-
-			conexao = conectarBanco();
-			update = conexao.prepareStatement("UPDATE empresa SET nome_empresa = ? WHERE cnpj_empresa = ?");
-
-			update.setString(1, novoNome);
-			update.setString(2, empresa.getCnpj());
-
-			update.execute();
-
-		} catch (SQLException erro) {
-			erro.printStackTrace();
-		}
-
-		finally {
-
-			try {
-
-				if (update != null)
-					update.close();
-
-				if (conexao != null)
-					conexao.close();
-
-			} catch (SQLException erro) {
-
-				erro.printStackTrace();
-			}
-		}
-	}
-	
-		public void atualizarEnderecoEmpresa(Empresa empresa, Long id_endereco) {
-
-		Connection conexao = null;
-		PreparedStatement update = null;
-
-		try {
-
-			conexao = conectarBanco();
-			update = conexao.prepareStatement("UPDATE empresa SET id_endereco = ? WHERE cnpj_empresa = ?");
-
-            update.setLong(1, id_endereco);
-			update.setString(2, empresa.getCnpj());
-
-			update.execute();
-
-		} catch (SQLException erro) {
-			erro.printStackTrace();
-		}
-
-		finally {
-
-			try {
-
-				if (update != null)
-					update.close();
-
-				if (conexao != null)
-					conexao.close();
-
-			} catch (SQLException erro) {
-
-				erro.printStackTrace();
-			}
-		}
-	}
-
-	public void atualizarCnpjEmpresa(Empresa empresa, String novoCnpj) {
-
-		Connection conexao = null;
-		PreparedStatement update = null;
-
-		try {
-
-			conexao = conectarBanco();
-			update = conexao.prepareStatement("UPDATE empresa SET cnpj_empresa = ? WHERE cnpj_empresa = ?");
-
-			update.setString(1, novoCnpj);
-			update.setString(2, empresa.getCnpj());
-
-			update.execute();
-
-		} catch (SQLException erro) {
-			erro.printStackTrace();
-		}
-
-		finally {
-
-			try {
-
-				if (update != null)
-					update.close();
-
-				if (conexao != null)
-					conexao.close();
-
-			} catch (SQLException erro) {
-
-				erro.printStackTrace();
-			}
-		}
-	}
-
-	public void atualizarContatoEmpresa(Empresa Empresa, Long id_contato) {
-		
-		Connection conexao = null;
-		PreparedStatement update = null;
-
-		try {
-
-			conexao = conectarBanco();
-			update = conexao.prepareStatement("UPDATE empresa SET id_contato = ? WHERE cnpj_empresa = ?");
-
-            update.setLong(1, id_contato);
-			update.setString(2, Empresa.getCnpj());
-
-			update.execute();
-
-		} catch (SQLException erro) {
-			erro.printStackTrace();
-		}
-
-		finally {
-
-			try {
-
-				if (update != null)
-					update.close();
-
-				if (conexao != null)
-					conexao.close();
-
-			} catch (SQLException erro) {
-
-				erro.printStackTrace();
-			}
-		}
-	}
-
-	public void editarEmpresa(Empresa empresa) {
-        Connection conexao = null;
-        PreparedStatement update = null;
-        try {
-            conexao = conectarBanco();
-            update = conexao.prepareStatement("UPDATE empresa SET nome_empresa = ?, cnpj_empresa = ?, senha_login_empresa = ?, id_endereco = ?, id_contato = ?, WHERE cnpj_empresa = ?");
-            update.setString(1, empresa.getNome());
-            update.setString(2, empresa.getCnpj());
-            update.setString(3, empresa.getSenhaLogin());
-            update.setLong(4, empresa.getEndereco().getId());
-            update.setLong(5, empresa.getContato().getId());
-            update.execute();
-        } catch (SQLException erro) {
-            erro.printStackTrace();
-        }
-        finally {
-            try {
-                if (update != null)
-                    update.close();
-                if (conexao != null)
-                    conexao.close();
-            } catch (SQLException erro) {
-                erro.printStackTrace();
-            }
-        }
-    }
-
-	public boolean verificarLoginSenha(String cnpj, String senha) {
-		
-		Connection conexao = null;
-		PreparedStatement consulta = null;
-		ResultSet resultado = null;
-		
-		boolean consultaBanco = false;
-
-		try {
-			conexao = conectarBanco();
-			consulta = conexao.prepareStatement("SELECT senha_login_empresa FROM empresa WHERE cnpj_empresa = ? and senha_login_empresa = ?");
-			
-			consulta.setString(1, cnpj);
-			consulta.setString(2, senha);
-			
-			consulta.execute();
-			
-			resultado = consulta.getResultSet();
-			consultaBanco = resultado.next();
-			
-		} catch (SQLException erro) {
-			erro.printStackTrace();
-		}
-
-		finally {
-
-			try {
-
-				if (resultado != null)
-					resultado.close();
-
-				if (consulta != null)
-					consulta.close();
-
-				if (conexao != null)
-					conexao.close();
-
-			} catch (SQLException erro) {
-
-				erro.printStackTrace();
-			}
-		}
-		return consultaBanco;
-		
-	}
 		
 	public List<Empresa> recuperarEmpresas() {
 
@@ -431,6 +242,52 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 			}
 		}
 		return empresa;
+		
+	}
+	
+	public boolean verificarLoginSenha(String cnpj, String senha) {
+		
+		Connection conexao = null;
+		PreparedStatement consulta = null;
+		ResultSet resultado = null;
+		
+		boolean consultaBanco = false;
+
+		try {
+			conexao = conectarBanco();
+			consulta = conexao.prepareStatement("SELECT senha_login_empresa FROM empresa WHERE cnpj_empresa = ? and senha_login_empresa = ?");
+			
+			consulta.setString(1, cnpj);
+			consulta.setString(2, senha);
+			
+			consulta.execute();
+			
+			resultado = consulta.getResultSet();
+			consultaBanco = resultado.next();
+			
+		} catch (SQLException erro) {
+			erro.printStackTrace();
+		}
+
+		finally {
+
+			try {
+
+				if (resultado != null)
+					resultado.close();
+
+				if (consulta != null)
+					consulta.close();
+
+				if (conexao != null)
+					conexao.close();
+
+			} catch (SQLException erro) {
+
+				erro.printStackTrace();
+			}
+		}
+		return consultaBanco;
 		
 	}
 	
