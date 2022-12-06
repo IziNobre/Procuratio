@@ -53,7 +53,6 @@ public class Servlet extends HttpServlet{
 
 			switch (action) {
 			
-					
 			case "/nova-empresa":
 				mostrarFormularioNovaEmpresa(request, response);
 				
@@ -63,7 +62,7 @@ public class Servlet extends HttpServlet{
 				cadastrarEmpresa(request, response); 
 				
 				break;
-							
+
 			case "/minha-conta":
 				listarEmpresa(request, response);
 								
@@ -78,12 +77,12 @@ public class Servlet extends HttpServlet{
 				atualizarEmpresa(request, response);
 				
 				break;
-				
+
 			case "/deletar-empresa":
 				deletarEmpresa(request, response);
 				
 				break;
-									
+			
 			default:
 				listarFuncionalidades(request, response);
 				break;
@@ -94,10 +93,10 @@ public class Servlet extends HttpServlet{
 		}
 	}
 
-	
+
 // EMPRESA 
 	
-	private void listarEmpresa(HttpServletRequest request, HttpServletResponse response)
+private void listarEmpresa(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		
 		String cnpj = request.getParameter("cnpj");
@@ -107,14 +106,14 @@ public class Servlet extends HttpServlet{
 		dispatcher.forward(request, response);
 	}
 
-	private void mostrarFormularioNovaEmpresa(HttpServletRequest request, HttpServletResponse response)
+private void mostrarFormularioNovaEmpresa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-empresa.jsp");
 		dispatcher.forward(request, response);
 	}
 	
-	private void cadastrarEmpresa(HttpServletRequest request, HttpServletResponse response)
+private void cadastrarEmpresa(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 
 		String telefone = request.getParameter("telefone");
@@ -139,7 +138,7 @@ public class Servlet extends HttpServlet{
 		response.sendRedirect("login");
 	}
 	
-	private void mostrarFormularioEditarEmpresa(HttpServletRequest request, HttpServletResponse response)
+private void mostrarFormularioEditarEmpresa(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
 		String cnpj = request.getParameter("cnpj");
@@ -164,13 +163,12 @@ public class Servlet extends HttpServlet{
 		String uf = request.getParameter("uf");
 		String cep = request.getParameter("cep");
 		Endereco endereco = daoEndereco.atualizarEndereco(new Endereco(logradouro, numero, complemento, bairro, cidade, uf, cep));
-		
-		
+
 		String nome = request.getParameter("nome");
 		String cnpj = request.getParameter("cnpj");
 		String senhaLogin = request.getParameter("senha");
 		daoEmpresa.atualizarEmpresa(new Empresa(nome, cnpj, senhaLogin, endereco, contato));
-		
+
 		response.sendRedirect("minha-conta");
 	}
 	
@@ -180,7 +178,7 @@ public class Servlet extends HttpServlet{
 		RequestDispatcher dispatcher = request.getRequestDispatcher("funcionalidades-empresa.jsp");
 		dispatcher.forward(request, response);
 	}
-	
+
 	private void deletarEmpresa(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		
 		String cnpj = request.getParameter("cnpj");
@@ -188,5 +186,5 @@ public class Servlet extends HttpServlet{
 		daoEmpresa.deletarEmpresa(empresa);
 		response.sendRedirect("home");
 	}
-	
+
 }
