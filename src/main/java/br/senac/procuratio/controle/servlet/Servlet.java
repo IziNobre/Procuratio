@@ -103,6 +103,16 @@ public class Servlet extends HttpServlet{
 				
 				break;
 			
+			case "/editar-funcao":
+				mostrarFormularioEditarFuncao(request, response):
+				
+				break;
+			
+			case "/atualizar-funcao":
+				atualizarFuncao(request, response);
+				
+				break;
+			
 			default:
 				listarFuncionalidades(request, response);
 				break;
@@ -232,6 +242,28 @@ public class Servlet extends HttpServlet{
 			Empresa empresa = daoEmpresa.recuperarEmpresa(cnpj);
 			String nome = request.getParameter("nome-funcao");
 			daoFuncao.cadastrarFuncao(new Funcao(empresa, nome));
+			
+			response.sendRedirect("funcao");
+		}
+		
+		private void mostrarFormularioEditarFuncao(HttpServletRequest request, HttpServletResponse response)
+				throws SQLException, ServletException, IOException {
+			
+			String nome = request.getParameter("nome-funcao");
+			Funcao funcao = daoFuncao.recuperarFuncaoPesquisandoNome(nome);
+			request.setAttribute("funcao", funcao);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-funcao.jsp");
+			dispatcher.forward(request, response);
+		}
+		
+		private void atualizarFuncao(HttpServletRequest request, HttpServletResponse response)
+				throws SQLException, IOException {
+			
+			String nome = request.getParameter("nome-funcao");
+			Funcao funcao = daoFuncao.recuperarFuncaoPesquisandoNome(nome);
+			String novoNome = request.getParameter("nome-funcao");
+			
+			daoFuncao.editarFuncao(new Funcao(novoNome));
 			
 			response.sendRedirect("funcao");
 		}
