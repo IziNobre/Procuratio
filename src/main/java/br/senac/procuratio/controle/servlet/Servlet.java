@@ -2,6 +2,7 @@ package br.senac.procuratio.controle.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,6 +24,7 @@ import br.senac.procuratio.modelo.dao.funcao.FuncaoDAOImpl;
 import br.senac.procuratio.modelo.entidade.contato.Contato;
 import br.senac.procuratio.modelo.entidade.empresa.Empresa;
 import br.senac.procuratio.modelo.entidade.endereco.Endereco;
+import br.senac.procuratio.modelo.entidade.funcao.Funcao;
 
 @WebServlet("/")
 public class Servlet extends HttpServlet{
@@ -32,11 +34,13 @@ public class Servlet extends HttpServlet{
 	private EmpresaDAO daoEmpresa;
 	private ContatoDAO daoContato;
 	private EnderecoDAO daoEndereco;
+	private FuncaoDAO daoFuncao;
 
 	public void init() {
 		daoEmpresa = new EmpresaDAOImpl();
 		daoContato = new ContatoDAOImpl();
 		daoEndereco = new EnderecoDAOImpl();
+		daoFuncao = new FuncaoDAOImpl();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -82,6 +86,22 @@ public class Servlet extends HttpServlet{
 				deletarEmpresa(request, response);
 				
 				break;
+				
+
+			case "/funcao":
+				listarFuncoes(request, response);
+				
+				break;
+			
+			case "/nova-funcao":
+				mostrarFormularioNovaFuncao(request, response);
+				
+				break;
+			
+			case  "/inserir-funcao":
+				cadastrarFuncao(request, response); 
+				
+				break;
 			
 			default:
 				listarFuncionalidades(request, response);
@@ -94,9 +114,9 @@ public class Servlet extends HttpServlet{
 	}
 
 
-// EMPRESA 
+	// EMPRESA 
 	
-private void listarEmpresa(HttpServletRequest request, HttpServletResponse response)
+	private void listarEmpresa(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		
 		String cnpj = request.getParameter("cnpj");
@@ -106,14 +126,14 @@ private void listarEmpresa(HttpServletRequest request, HttpServletResponse respo
 		dispatcher.forward(request, response);
 	}
 
-private void mostrarFormularioNovaEmpresa(HttpServletRequest request, HttpServletResponse response)
+	private void mostrarFormularioNovaEmpresa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-empresa.jsp");
 		dispatcher.forward(request, response);
 	}
 	
-private void cadastrarEmpresa(HttpServletRequest request, HttpServletResponse response)
+	private void cadastrarEmpresa(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 
 		String telefone = request.getParameter("telefone");
@@ -138,7 +158,7 @@ private void cadastrarEmpresa(HttpServletRequest request, HttpServletResponse re
 		response.sendRedirect("login");
 	}
 	
-private void mostrarFormularioEditarEmpresa(HttpServletRequest request, HttpServletResponse response)
+	private void mostrarFormularioEditarEmpresa(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
 		String cnpj = request.getParameter("cnpj");
@@ -153,7 +173,7 @@ private void mostrarFormularioEditarEmpresa(HttpServletRequest request, HttpServ
 		String telefone = request.getParameter("telefone");
 		String celular = request.getParameter("celular");
 		String email = request.getParameter("email");
-		Contato contato = daoContato.atualizarContato(new Contato(telefone, celular, email));
+		Contato contato = daoContato.editarContato(new Contato(telefone, celular, email));
 		
 		String logradouro = request.getParameter("logradouro");
 		short numero = Short.valueOf(request.getParameter("numero"));
@@ -162,12 +182,12 @@ private void mostrarFormularioEditarEmpresa(HttpServletRequest request, HttpServ
 		String cidade = request.getParameter("cidade");
 		String uf = request.getParameter("uf");
 		String cep = request.getParameter("cep");
-		Endereco endereco = daoEndereco.atualizarEndereco(new Endereco(logradouro, numero, complemento, bairro, cidade, uf, cep));
+		Endereco endereco = daoEndereco.editarEndereco(new Endereco(logradouro, numero, complemento, bairro, cidade, uf, cep));
 
 		String nome = request.getParameter("nome");
 		String cnpj = request.getParameter("cnpj");
 		String senhaLogin = request.getParameter("senha");
-		daoEmpresa.atualizarEmpresa(new Empresa(nome, cnpj, senhaLogin, endereco, contato));
+		daoEmpresa.editarEmpresa(new Empresa(nome, cnpj, senhaLogin, endereco, contato));
 
 		response.sendRedirect("minha-conta");
 	}
@@ -186,5 +206,33 @@ private void mostrarFormularioEditarEmpresa(HttpServletRequest request, HttpServ
 		daoEmpresa.deletarEmpresa(empresa);
 		response.sendRedirect("home");
 	}
+	
+	// FUNÇÕES	
+	
+		private void listarFuncoes(HttpServletRequest request, HttpServletResponse response)
+				throws SQLException, IOException, ServletException {
+			
+			List<Funcao> funcoes  = daoFuncao.recuperarFuncoes();
+			request.setAttribute("funcoes", funcoes);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("listar-funcoes.jsp");
+			dispatcher.forward(request, response);
+		}
 
+		private void mostrarFormularioNovaFuncao(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-funcao.jsp");
+			dispatcher.forward(request, response);
+		}
+		
+		private void cadastrarFuncao(HttpServletRequest request, HttpServletResponse response)
+				throws SQLException, IOException {
+			
+			String cnpj = request.getParameter("cnpj");
+			Empresa empresa = daoEmpresa.recuperarEmpresa(cnpj);
+			String nome = request.getParameter("nome-funcao");
+			daoFuncao.cadastrarFuncao(new Funcao(empresa, nome));
+			
+			response.sendRedirect("funcao");
+		}
 }
