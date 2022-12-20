@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Procuratio</title>
+    <link rel="stylesheet" href="procuratioNovo.css" />
+    <script src="js/scripts.js" defer></script>
+    <script src="procuratio.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:ital,wght@0,400;0,500;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-container">
+        <div class="simboloP">P</div>
+        <div class="logo">PROCURATIO</div>
+      </div>
+      <a class="opcoes" href="home">Home</a>
+      <a class="opcoes selecionado" href="">Painel principal</a>
+      <a class="opcoes" href="blog">Blog</a>
+      <a class="opcoes" href="ajuda">Ajuda</a>
+      <div class="btn-header-container">
+        <button class="btn btn-minhaConta">Minha Conta</button>
+      </div>
+    </header>
+    <div class="breadcrumbs">Painel principal / Empresas / Novo Cadastro</div>
+
+    <section class="container">
+
+          <div class="modal-content edit-modal">
+            <div class="modal-header">Novo Cadastro Empresa</div>
+
+            <div class="cadastroEmpresaCardBody">
+
+              <div class="modal-empresa">
+                <div>
+                  <div class="painel-icone">
+                    <img src="/Imagens/Empresas.png" />
+                  </div>
+                </div>
+                <div>
+                  <h3>Nome da Empresa</h3>
+                  <div class="modal-empresa-content" style="max-width: 600px">
+                    <p>
+                      Maior loja de cervejas online do Brasil. Pagamentos com
+                      PicPay. Kits para Presentear. Entrega em todo Brasil.
+                      Ranking Ótima eBit. Em até 3x sem juros. As Maiores Marcas
+                      Aqui.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <form class="form-body">
+                <div class="row">
+                  <div class="cadastroEmpresaCardField">
+                    <label for="nomeEmpresa">Nome da Empresa</label>
+                    <input
+                      type="text"
+                      id="nomeEmpresa"
+                      name="nomeEmpresa"
+                      placeholder="Digite nome Empresa"
+                    />
+                  </div>
+                  <div class="cadastroEmpresaCardField">
+                    <label for="cnpj">CNPJ</label>
+                    <input
+                      type="text"
+                      id="cnpj"
+                      name="cnpj"
+                      placeholder="Digite CNPJ"
+                    />
+                  </div>
+                  <div class="cadastroEmpresaCardField">
+                    <label for="cnpj">Senha de Login</label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      placeholder="password"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cadastroEmpresaCardField">
+                    <label for="telefoneFixo">Telefone Fixo</label>
+                    <input
+                      type="text"
+                      id="telefoneFixo"
+                      name="telefoneFixo"
+                      placeholder="Digite telefone fixo"
+                    />
+                  </div>
+                  <div class="cadastroEmpresaCardField">
+                    <label for="email">E-mail</label>
+                    <input
+                      type="text"
+                      id="email"
+                      name="email"
+                      placeholder="Digite o E-mail"
+                    />
+                  </div>
+                  <div class="cadastroEmpresaCardField">
+                    <label for="telefoneCelular">Telefone Celular</label>
+                    <input
+                      type="text"
+                      id="telefoneCelular"
+                      name="telefoneCelular"
+                      placeholder="Digite telefone celular"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cadastroEmpresaCardField">
+                    <label for="endereco">Logradouro</label>
+                    <input
+                      type="text"
+                      id="endereco"
+                      name="endereco"
+                      placeholder="Digite o logradouro"
+                    />
+                  </div>
+
+                  <div class="cadastroEmpresaCardField sm">
+                    <label for="numero">Número</label>
+                    <input
+                      type="text"
+                      id="numero"
+                      name="numero"
+                      placeholder="Digite o número"
+                    />
+                  </div>
+                  <div class="cadastroEmpresaCardField md">
+                    <label for="complemento">Complemento</label>
+                    <input
+                      type="text"
+                      id="complemento"
+                      name="complemento"
+                      placeholder="Digite o complemento"
+                    />
+                  </div>
+                  <div class="cadastroEmpresaCardField sm">
+                    <label for="cep">CEP</label>
+                    <input
+                      type="text"
+                      id="cep"
+                      name="cep"
+                      placeholder="Digite o CEP"
+                    />
+                  </div>
+                  
+                  <div class="cadastroEmpresaCardField md">
+                    <label for="bairro">Bairro</label>
+                    <input
+                      type="text"
+                      id="bairro"
+                      name="bairro"
+                      placeholder="Digite o bairro"
+                    />
+                  </div>
+
+                  <div class="cadastroEmpresaCardField sm">
+                    <label for="uf">UF</label>
+                    <input
+                      type="text"
+                      id="uf"
+                      name="uf"
+                      placeholder="Digite a UF"
+                    />
+                  </div>
+
+                  <div class="cadastroEmpresaCardField md">
+                    <label for="cidade">Cidade</label>
+                    <input
+                      type="text"
+                      id="cidade"
+                      name="cidade"
+                      placeholder="Digite a cidade"
+                    />
+                  </div>
+
+                </div>
+                <div class="modal-actions">
+                  <button
+                    type="button"
+                    class="btn btn-empty"
+                    id="btn-edit-modal"
+                  >
+                    Cancelar
+                  </button>
+                  <button class="btn">Salvar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="copyright">Desenvolvido por javaMinds ©</div>
+    </footer>
+    
+  </body>
+</html>
