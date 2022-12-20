@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Procuratio</title>
+    <link rel="stylesheet" href="procuratioNovo.css" />
+    <script src="js/scripts.js" defer></script>
+    <script src="procuratio.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:ital,wght@0,400;0,500;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-container">
+        <div class="simboloP">P</div>
+        <div class="logo">PROCURATIO</div>
+      </div>
+      <a class="opcoes" href="home">Home</a>
+      <a class="opcoes selecionado" href="">Painel principal</a>
+      <a class="opcoes" href="blog">Blog</a>
+      <a class="opcoes" href="ajuda">Ajuda</a>
+      <div class="btn-header-container">
+        <button class="btn btn-minhaConta">Minha Conta</button>
+      </div>
+    </header>
+    <div class="breadcrumbs">Painel principal / Colaborador / Cadastro</div>
+
+    <section class="container">
+
+          <div class="modal-content edit-modal">
+            <div class="modal-header">Cadastro Colaborador</div>
+
+            <div class="cadastroEmpresaCardBody">
+
+              <div class="modal-empresa">
+                <div>
+                  <div class="painel-icone">
+                    <img src="/Imagens/Colaboradores.png" />
+                  </div>
+                </div>
+                <div>
+                  <h3>Nome Colaborador</h3>
+                  <div class="modal-empresa-content" style="max-width: 600px">
+                    <p><b>Empresa:</b> <span>Nome da empresa</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <form class="form-body" style="margin-top: 20px">
+
+                <div>
+                  <div class="title-row">
+                    <span>Dados Cadastrais</span>
+                    <i
+                      class="arrow up hide-show-container"
+                      for="dados-cadastrais"
+                    ></i>
+                  </div>
+
+                  <div id="dados-cadastrais">
+
+                    <div class="row" id="dados-cadastrais">
+                    
+
+                      <div
+                        class="cadastroEmpresaCardField"
+                        style="flex-basis: 50%"
+                      >
+                        <label for="nomeEmpresa">Nome do colaborador</label>
+                        <input
+                          type="text"
+                          id="nomeEmpresa"
+                          name="nomeEmpresa"
+                          placeholder="Digite nome Empresa"
+                        />
+                      </div>
+
+                      <div
+                        class="cadastroEmpresaCardField sm"
+                        style="flex-basis: 20%"
+                      >
+                        <label for="nascimento">Nascimento</label>
+                        <input
+                          type="text"
+                          id="nascimento"
+                          name="nascimento"
+                          placeholder="00/00/0000"
+                        />
+                      </div>
+
+                      <div
+                      class="buscar-select"
+                      style="
+                        margin-top: 1px;
+                        flex-basis: 20%;
+                        width: unset;
+                        max-width: unset;
+                      "
+                      >
+                      <label for="genero">Gênero</label>
+                      <select id="genero" name="genero">
+                        <option value=" ">Selecione o seu Gênero</option>
+                        <option value="um">1</option>
+                        <option value="dois">2</option>
+                        <option value="tres">3</option>
+                      </select>
+                      </div>
+
+
+                      <div
+                        class="cadastroEmpresaCardField"
+                        style="flex-basis: 50%"
+                      >
+                        <label for="nomeEmpresa">Nome da Mãe</label>
+                        <input
+                          type="text"
+                          id="nomeEmpresa"
+                          name="nomeEmpresa"
+                          placeholder="Digite o nome da mãe"
+                        />
+                      </div>
+
+                      <div
+                        class="cadastroEmpresaCardField sm"
+                        style="flex-basis: 20%"
+                      >
+                        <label for="nascimento">CPF</label>
+                        <input
+                          type="text"
+                          id="nascimento"
+                          name="nascimento"
+                          placeholder="Insira seu CPF"
+                        />
+                      </div>
+
+                      <div
+                        class="buscar-select"
+                        style="
+                        margin-top: 1px;
+                        flex-basis: 20%;
+                        width: unset;
+                        max-width: unset;
+                      "
+                      >
+                        <label for="genero">Escolaridade</label>
+                        <select id="genero" name="genero">
+                          <option value=" ">Selecione sua Escolaridade</option>
+                          <option value="um">1</option>
+                          <option value="dois">2</option>
+                          <option value="tres">3</option>
+                        </select>
+                      </div>
+
+
+                      <div
+                        class="cadastroEmpresaCardField"
+                        style="flex-basis: 50%"
+                      >
+                        <label for="nomeEmpresa">PIS</label>
+                        <input
+                          type="text"
+                        id="nomeEmpresa"
+                        name="nomeEmpresa"
+                        placeholder="Digite o PIS"
+                        />
+                      </div>
+
+                      <div
+                        class="cadastroEmpresaCardField sm"
+                        style="flex-basis: 41.5%"
+                      >
+                        <label for="nascimento">CTPS</label>
+                        <input
+                          type="text"
+                          id="nascimento"
+                          name="nascimento"
+                          placeholder="Insira a CTPS"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div>
+                  <div class="title-row">
+                    <span>Endereço</span>
+                    <i
+                      class="arrow up hide-show-container"
+                      for="endereco"
+                    ></i>
+                  </div>
+
+                  <div id="endereco">
+
+                    <div class="row" id="endereco">
+                    
+                      <div
+                        class="cadastroEmpresaCardField"
+                        style="flex-basis: 50%"
+                      >
+                        <label for="nomeEmpresa">Logradouro</label>
+                        <input
+                          type="text"
+                          id="nomeEmpresa"
+                          name="nomeEmpresa"
+                          placeholder="Digite o Logradouro"
+                        />
+                      </div>
+
+                      <div
+                        class="cadastroEmpresaCardField sm"
+                        style="flex-basis: 20%"
+                      >
+                        <label for="nascimento">Número</label>
+                        <input
+                          type="text"
+                          id="nascimento"
+                          name="nascimento"
+                          placeholder="Digite o Número"
+                        />
+                      </div>
+
+                      <div
+                        class="cadastroEmpresaCardField sm"
+                        style="flex-basis: 20%"
+                      >
+                        <label for="nascimento">Complemento</label>
+                        <input
+                          type="text"
+                          id="nascimento"
+                          name="nascimento"
+                          placeholder="Complemento"
+                        />
+                      </div>
+
+                      <div
+                        class="cadastroEmpresaCardField"
+                        style="flex-basis: 30%"
+                      >
+                        <label for="nomeEmpresa">Bairro</label>
+                        <input
+                          type="text"
+                          id="nomeEmpresa"
+                          name="nomeEmpresa"
+                          placeholder="Digite o Bairro"
+                        />
+                      </div>
+
+                      <div
+                        class="cadastroEmpresaCardField sm"
+                        style="flex-basis: 29%"
+                      >
+                        <label for="nascimento">Cidade</label>
+                        <input
+                          type="text"
+                          id="nascimento"
+                          name="nascimento"
+                          placeholder="Digite a Cidade"
+                        />
+                      </div>
+
+                      <div
+                        class="cadastroEmpresaCardField sm"
+                        style="flex-basis: 10%"
+                      >
+                        <label for="nascimento">UF</label>
+                        <input
+                          type="text"
+                          id="nascimento"
+                          name="nascimento"
+                          placeholder="UF"
+                        />
+                      </div>
+
+                      <div
+                        class="cadastroEmpresaCardField sm"
+                        style="flex-basis: 20%"
+                      >
+                        <label for="nascimento">CEP</label>
+                        <input
+                          type="text"
+                          id="nascimento"
+                          name="nascimento"
+                          placeholder="Digite o CEP"
+                        />
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <div>
+                  <div class="title-row">
+                    <span>Contato</span>
+                    <i
+                      class="arrow up hide-show-container"
+                      for="contato"
+                    ></i>
+                  </div>
+
+                  <div id="contato">
+
+                    <div class="row" id="contato">
+                      
+                      <div
+                        class="cadastroEmpresaCardField"
+                        style="flex-basis: 49%"
+                      >
+                        <label for="nomeEmpresa">Telefone</label>
+                        <input
+                          type="text"
+                          id="nomeEmpresa"
+                          name="nomeEmpresa"
+                          placeholder="Digite o Telefone"
+                        />
+                      </div>
+
+                      <div
+                        class="cadastroEmpresaCardField sm"
+                        style="flex-basis: 49%"
+                      >
+                        <label for="nascimento">E-mail</label>
+                        <input
+                          type="text"
+                          id="nascimento"
+                          name="nascimento"
+                          placeholder="Digite o e-mail"
+                        />
+                      </div>
+
+                      <div
+                        class="cadastroEmpresaCardField sm"
+                        style="flex-basis: 49%"
+                      >
+                        <label for="nascimento">Celular</label>
+                        <input
+                          type="text"
+                          id="nascimento"
+                          name="nascimento"
+                          placeholder="Digite o Celular"
+                        />
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                
+                
+                    <div>
+                      <div class="title-row">
+                      <span>Dados Contratuais</span>
+                        <i
+                          class="arrow up hide-show-container"
+                          for="dados-contratuais"
+                        ></i>
+                      </div>
+        
+                      <div id="dados-contratuais">
+        
+                        <div class="row" id="dados-contratuais">
+                            
+                          <div
+                            class="buscar-select"
+                            style="
+                            margin-top: 1px;
+                            flex-basis: 50%;
+                            width: unset;
+                            max-width: unset;
+                          "
+                          >
+                            <label for="funcao">Função</label>
+                            <select id="funcao" name="funcao">
+                              <option value=" ">Selecione a Função</option>
+                              <option value="um">1</option>
+                              <option value="dois">2</option>
+                              <option value="tres">3</option>
+                            </select>
+                          </div>
+        
+                          <div
+                            class="buscar-select"
+                            style="
+                            margin-top: 1px;
+                            flex-basis: 23%;
+                            width: unset;
+                            max-width: unset;
+                          "
+                          >
+                            <label for="contrato">Contrato</label>
+                            <select id="contrato" name="contrato">
+                              <option value=" ">Selecione o tipo de Contrato</option>
+                              <option value="um">1</option>
+                              <option value="dois">2</option>
+                              <option value="tres">3</option>
+                            </select>
+                          </div>
+        
+                          <div
+                              class="cadastroEmpresaCardField sm"
+                              style="flex-basis: 23%"
+                            >
+                              <label for="nascimento">Salário</label>
+                              <input
+                                type="text"
+                                id="nascimento"
+                                name="nascimento"
+                                placeholder="Informe o Salário"
+                              />
+                          </div>
+
+                          <div
+                              class="cadastroEmpresaCardField sm"
+                              style="flex-basis: 24.5%"
+                            >
+                              <label for="nascimento">Data de Admissão</label>
+                              <input
+                                type="text"
+                                id="nascimento"
+                                name="nascimento"
+                                placeholder="Informe a Data"
+                              />
+                          </div>
+
+                          <div
+                            class="cadastroEmpresaCardField sm"
+                            style="flex-basis: 24.5%"
+                          >
+                            <label for="nascimento">Término da Experiência</label>
+                            <input
+                              type="text"
+                              id="nascimento"
+                              name="nascimento"
+                              placeholder="Data do Término da Experiência"
+                            />
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                        <div class="title-row">
+                          <span>Dependentes</span>
+                          <i
+                            class="arrow up hide-show-container"
+                            for="Dependentes"
+                          ></i>
+                        </div>
+      
+                        <div id="Dependentes">
+      
+                            <div class="row" id="Dependentes">
+                          
+      
+                                <div
+                                class="cadastroEmpresaCardField"
+                                style="flex-basis: 50%"
+                                >
+                                <label for="nomeEmpresa">Nome do Dependente</label>
+                                <input
+                                    type="text"
+                                    id="nomeEmpresa"
+                                    name="nomeEmpresa"
+                                    placeholder="Digite o nome do dependente"
+                                />
+                                </div>
+        
+                                <div
+                                class="cadastroEmpresaCardField sm"
+                                style="flex-basis: 20%"
+                                >
+                                <label for="nascimento">CPF</label>
+                                <input
+                                    type="text"
+                                    id="nascimento"
+                                    name="nascimento"
+                                    placeholder="Insira o CPF"
+                                />
+                                </div>
+        
+                                <div
+                                class="buscar-select"
+                                style="
+                                margin-top: 1px;
+                                flex-basis: 20%;
+                                width: unset;
+                                max-width: unset;
+                                "
+                                >
+                                <label for="genero">Gênero</label>
+                                <select id="genero" name="genero">
+                                <option value=" ">Selecione o seu Gênero</option>
+                                <option value="um">1</option>
+                                <option value="dois">2</option>
+                                <option value="tres">3</option>
+                                </select>
+                                </div>
+        
+        
+                                <div
+                                class="cadastroEmpresaCardField"
+                                style="flex-basis: 20%"
+                                >
+                                <label for="nomeEmpresa">Nascimento</label>
+                                <input
+                                    type="text"
+                                    id="nomeEmpresa"
+                                    name="nomeEmpresa"
+                                    placeholder="Data de Nasciemnto"
+                                />
+                                </div>
+        
+                                <div
+                                class="cadastroEmpresaCardField sm"
+                                style="flex-basis: 20%"
+                                >
+                                <label for="nascimento">Grau de Parentesco</label>
+                                <input
+                                    type="text"
+                                    id="nascimento"
+                                    name="nascimento"
+                                    placeholder="Informe o Grau de Parentesco"
+                                />
+                                </div>
+                          </div>
+                        </div>
+                
+
+                <div class="modal-actions">
+                  <button
+                    type="button"
+                    class="btn btn-empty"
+                    id="btn-edit-modal"
+                  >
+                    Cancelar
+                  </button>
+                  <button class="btn">Cadastrar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="copyright">Desenvolvido por javaMinds ©</div>
+    </footer>
+
+    <script>
+      // Script que faz sumir e aparecer as categorias do formulário
+      var buttonsHideShow = document.getElementsByClassName(
+        "hide-show-container"
+      );
+      for (let index = 0; index < buttonsHideShow.length; index++) {
+        const element = buttonsHideShow[index];
+        element.onclick = (event) => {
+          const el = event.target;
+          const target = document.getElementById(el.getAttribute("for"));
+          if (target.classList.contains("hide")) {
+            target.classList.remove("hide");
+            el.classList.remove("down");
+            el.classList.add("up");
+          } else {
+            target.classList.add("hide");
+            el.classList.add("down");
+            el.classList.remove("up");
+          }
+        };
+      }
+
+    </script>
+  </body>
+</html>
